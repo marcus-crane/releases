@@ -1,7 +1,10 @@
 extends layout.pug
 
 block title
-    title Release Calender - Index
+    title Upcoming Releases
 
 block content
-    h1 A Test
+    each val in games
+        p #{val[0]} releases in #{val[1]}
+        p Developed by #{val[2]} and published by #{val[3]}
+        hr
