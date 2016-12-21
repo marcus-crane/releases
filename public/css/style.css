@@ -1,0 +1,227 @@
+/* Header */
+
+header {
+  margin: 1em;
+}
+
+header h1 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+header h2 {
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+
+header h3 {
+  font-size: 0.7em;
+  margin-bottom: 0;
+}
+
+header a i.fa-chevron-left {
+  color: black;
+  font-size: 1.8em;
+  margin-top: 0.4em;
+  padding-left: 0.2em;
+  vertical-align: top;
+}
+
+/* Title */
+
+#title {
+  display: inline-block;
+  padding-left: 1em;
+}
+
+/* Info */
+
+#info {
+  display: inline-block;
+  padding-right: 1em;
+}
+
+/* Setting font */
+
+section, article, h1, h2, p {
+  font-family: 'Lato', 'Raleway', Helvetica, sans-serif;
+}
+
+/* Body Content */
+
+#wrapper {
+  background-image: url("../img/wood.png");
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+
+/* Index Content */
+
+section#post {
+  margin-bottom: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+section#post a#ghost-link {
+  color: black;
+  text-decoration: none;
+}
+
+article#post {
+  padding: 0.8em;
+}
+
+article#post h1, article#post h2, article#post p {
+  text-align: center;
+}
+
+article#post h1 {
+  margin: 0;
+}
+
+article#post h2 {
+  font-size: 1.1em;
+}
+
+/* Blog Content */
+
+section {
+  background-color: white;
+  margin: 0 auto;
+  padding-top: 2em;
+  padding-bottom: 0.1em;
+  width: 85%;
+}
+
+article {
+  margin: 0 auto;
+  width: 70%;
+}
+
+article h1 {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: right;
+}
+
+article p {
+  font-size: 0.8em;
+}
+
+article img {
+  height: 100%;
+  width: 100%;
+}
+
+/* Footer */
+
+footer {
+  bottom: 0;
+  padding: 0.8em;
+}
+
+footer p {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+/* Media Queries */
+
+@media (min-width: 600px) {
+  section {
+    width: 75%;
+  }
+
+  article {
+    width: 70%;
+  }
+
+  article h1 {
+    font-size: 1.1em;
+  }
+
+  article p {
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 800px) {
+  header a i.fa-chevron-left {
+  font-size: 2.0em;
+  margin-top: 0.45em;
+  }
+
+  header h1 {
+    font-size: 1.2em;
+  }
+
+  header h2 {
+    font-size: 1em;
+  }
+
+  header h3 {
+    font-size: 0.8em;
+  }
+
+  section {
+    width: 70%;
+  }
+
+  article {
+    width: 80%;
+  }
+
+  article h1 {
+    font-size: 1.2em;
+  }
+
+  article p {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 1000px) {
+  header a i.fa-chevron-left {
+    font-size: 2.2em;
+    margin-top: 0.6em;
+  }
+
+  header h1 {
+    font-size: 1.4em;
+  }
+
+  header h2 {
+    font-size: 1.2em;
+  }
+
+  header h3 {
+    font-size: 1em;
+  }
+
+  section {
+    width: 50%;
+  }
+
+  section.post {
+    width: 75%;
+  }
+
+  article {
+    width: 80%;
+  }
+
+  article h1 {
+    font-size: 1.3em;
+  }
+
+  article p {
+    font-size: 1.1em;
+  }
+}
