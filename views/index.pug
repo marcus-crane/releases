@@ -4,7 +4,7 @@ block title
     title Upcoming Releases
 
 block content
+    include mixins/header.pug
+    include mixins/game.pug
     each val in games
-        p #{val[0]} releases in #{val[1]}
-        p Developed by #{val[2]} and published by #{val[3]}
-        hr
+        +game(val[0], val[1], val[2], val[3])

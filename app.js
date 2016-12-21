@@ -10,6 +10,7 @@ const jsonParser = bodyParser.json();
 // View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.locals.pretty = true;
 
 // Middleware Setup
 const routes = require('./routes/index');
