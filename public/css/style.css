@@ -126,6 +126,8 @@ footer p {
 }
 
 footer a {
+    padding-left: 2px;
+    padding-right: 2px;
     text-decoration: none;
 }
 

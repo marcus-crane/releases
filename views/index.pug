@@ -4,8 +4,9 @@ block title
     title Upcoming Releases
 
 block content
-    include mixins/header.pug
+    include partials/header.pug
     include mixins/game.pug
     div#wrapper
         each val in games
             +game(val[0], val[1], val[2])
+    include partials/footer.pug
