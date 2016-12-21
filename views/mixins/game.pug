@@ -1,5 +1,6 @@
 mixin game(title, date, bgcover)
-    section#post(style={'background-image': 'url(' + bgcover + ')'})
-        article#post
-            h1 #{title}
-            h2 #{date}
+    div.background
+        section#post(style={'background-image': 'url(' + bgcover + ')'})
+            article#post
+                h1 #{title}
+                h2 #{date}
