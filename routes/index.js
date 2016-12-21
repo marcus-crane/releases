@@ -9,6 +9,7 @@ const knex = Knex(knexConfig['development']);
 router.get('/', (req, res, next) => {
     knex('games')
     .then((games) => {
+        // TODO Use object instead of an array
         let releases = []
         for (i in games) {
             let date = '';
@@ -17,8 +18,7 @@ router.get('/', (req, res, next) => {
             let day = games[i].releaseDay;
             let month = games[i].releaseMonth;
             let year = games[i].releaseYear
-            let developer = games[i].developer
-            let publisher = games[i].publisher
+            let bgcover = games[i].bgcover
 
             if (quarter) {
                 date = `${quarter} ${year}`;
@@ -29,7 +29,7 @@ router.get('/', (req, res, next) => {
                 date += year
             }
 
-            releases.push([games[i].title, date, developer, publisher])
+            releases.push([games[i].title, date, bgcover])
         }
         res.render('index', { "games": releases })
     });

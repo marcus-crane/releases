@@ -1,4 +1,5 @@
-mixin game(title, date, developer, publisher)
-    p #{title} releases in #{date}
-    p Developed by #{developer} and published by #{publisher}
-    hr
+mixin game(title, date, bgcover)
+    section#post(style={'background-image': 'url(' + bgcover + ')'})
+        article#post
+            h1 #{title}
+            h2 #{date}
