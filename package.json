@@ -18,6 +18,7 @@
   "homepage": "https://github.com/marcus-crane/releases#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "giantbombing-api": "^1.0.4",
     "gm": "^1.23.0",
