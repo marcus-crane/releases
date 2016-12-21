@@ -68,64 +68,6 @@ section#post {
     padding-bottom: 1em;
 }
 
-section#post a#ghost-link {
-    color: black;
-    text-decoration: none;
-}
-
-article#post {
-    padding: 0.8em;
-}
-
-article#post h1, article#post h2, article#post p {
-    text-align: center;
-}
-
-article#post h1 {
-    margin: 0;
-    font-size: 2em;
-    -webkit-text-stroke: 0.9px black;
-    text-shadow: 1.6px 2.5px 0 #000;
-    -webkit-font-smoothing: antialised;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-article#post h2 {
-    font-size: 1.2em;
-    margin-bottom: 0;
-    text-shadow: 1.8px 1.6px 0 #000;
-}
-
-/* Blog Content */
-
-section {
-    background-color: white;
-    margin: 0 auto;
-    padding-top: 2em;
-    padding-bottom: 0.1em;
-    width: 85%;
-}
-
-article {
-    margin: 0 auto;
-    width: 70%;
-}
-
-article h1 {
-    font-size: 1em;
-    font-weight: bold;
-    text-align: right;
-}
-
-article p {
-    font-size: 0.8em;
-}
-
-article img {
-    height: 100%;
-    width: 100%;
-}
-
 /* Footer */
 
 footer {
