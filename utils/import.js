@@ -1,6 +1,7 @@
 const path = require('path')
 const dotenv = require('dotenv').config({ path: '../.env'})
 const gb = require('giantbombing-api')
+const blurImages = require('./blur')
 
 const config = {
     apiKey: process.env.GIANT_BOMB_API_KEY,
@@ -31,16 +32,22 @@ GBAPI.getSearch(search_options, (err, res) => {
             if (err) {
                 console.log('Oh')
             } else {
-                entry.description = res.results.deck
-                entry.name = res.results.name
                 entry.gb_id = res.results.id
+                entry.title = res.results.name
+                entry.description = res.results.deck
+                entry.boxart = `/img/boxart/${process.argv[3]}.jpg`
+                entry.bgcover = `/img/bgcover/${process.argv[3]}.jpg`
                 entry.developer = res.results.developers[0].name
                 entry.publisher = res.results.publishers[0].name
-                entry.releaseYear = res.results.expected_release_year
-                entry.releaseMonth = res.results.expected_release_month
-                entry.releaseDay = res.results.expected_release_day
-                entry.releaseQuarter = res.results.expected_release_quarter
+                if (res.results.expected_release_quarter) {
+                    entry.releaseQuarter = res.results.expected_release_quarter
+                } else {
+                    if (entry.releaseDay) { entry.releaseDay = res.results.expected_release_day }
+                    if (entry.releaseMonth) { entry.releaseMonth = res.results.expected_release_month }
+                    entry.releaseYear = res.results.expected_release_year
+                }   
                 console.log(entry)
+                blurImages()
             }
         })
     }
