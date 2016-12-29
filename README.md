@@ -24,8 +24,10 @@ Yeah, here it is:
 
 Pull a Postgres image from Docker's repository and check that it is running on the correct posts
 
+**NOTE**: You'll likely want to use Kitematic if you're on macOS but since I host this off a Linux Mint server w/ nginx, I've included "pure" terminal only instructions
+
 ```
-docker run -d -p 5432:32768 postgres (OR JUST USE KITEMATIC ON A MAC IT'S WAY EASIER)
+docker run -d -p 5432:32768 postgres
 docker ps
 ```
 
