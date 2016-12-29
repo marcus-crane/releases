@@ -33,7 +33,7 @@ You should see something like
 
 | CONTAINER ID | IMAGE    | COMMAND                | CREATED        | STATUS        | PORTS                             | NAMES           |
 | ------------ | -------- | ---------------------- | -------------- | ------------- | --------------------------------- | --------------- |
-| 18e167d5fc61 | postgres | "/docker-entrypoint.s" | 53 seconds ago | Up 52 seconds | 5432/tcp, 0.0.0.0:5432->32768/tcp | snapping_turtle |
+| 18e167d5fc61 | postgres | "/docker-entrypoint.s" | 53 seconds ago | Up 52 seconds | 5432/tcp, 0.0.0.0:5432->32768/tcp | snapping_turtle **(OR PROBABLY JUST POSTGRES)** |
 
 Take note of the container name (which will be unique to your install and **may just be called postgres**) and run the following command
 
