@@ -1,0 +1,10 @@
+extends layout.pug
+
+block title
+    title Import some upcoming releases
+
+block content
+    include partials/header.pug
+    form(method="POST" action="/confirm")
+        input(type="text" name="title")
+        input(type="submit")
