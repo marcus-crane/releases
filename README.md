@@ -4,7 +4,7 @@
 
 I got fed up with there being no nice, simple to parse sites that show release dates for upcoming games so I just decided to make my own.
 
-It's not done by any means but I may as well open source it in case anyone wants to poke around.
+It's not done by any means but I may as well open source it in case anyone wants to poke around a bit.
 
 ### It's messy
 
