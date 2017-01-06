@@ -489,11 +489,12 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-giantbombing-api@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/giantbombing-api/-/giantbombing-api-1.0.4.tgz#d32341556c5aeba1337e220c4191c506c7d75058"
+giantbombapi@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/giantbombapi/-/giantbombapi-1.0.0.tgz#8881d2c3dbaf737a76fc8538151378b596ec1a39"
   dependencies:
-    request "^2.69.0"
+    lodash "^3.10.1"
+    request "^2.65.0"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -737,8 +738,8 @@ json-stringify-safe@~5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
 jsonpointer@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.0.0.tgz#6661e161d2fc445f19f98430231343722e1fcbd5"
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.0.1.tgz#4fd92cb34e0e9db3c89c8622ecf51f9b978c6cb9"
 
 jsprim@^1.2.2:
   version "1.3.1"
@@ -796,6 +797,10 @@ liftoff@~2.2.0:
     flagged-respawn "^0.3.2"
     rechoir "^0.6.2"
     resolve "^1.1.7"
+
+lodash@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
 lodash@^4.6.0:
   version "4.17.2"
@@ -1182,7 +1187,7 @@ repeat-string@^1.5.2:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
 
-request@^2.69.0:
+request@^2.65.0:
   version "2.79.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
   dependencies:
