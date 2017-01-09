@@ -4,6 +4,7 @@ const router = express.Router();
 const path = require('path')
 const dotenv = require('dotenv').config()
 const gb = require('giantbombing-api')
+const moment = require('moment')
 
 const Knex = require('knex');
 const knexConfig = require('../knexfile');
@@ -24,7 +25,7 @@ router.get('/', (req, res, next) => {
         let releases = []
         for (i in games) {
             let name = games[i].title;
-            let date = new Date(`${games[i].releaseDate} GMT`);
+            let date = moment(`${games[i].releaseDate} GMT`);
             let bgcover = games[i].bgcover;
 
             releases.push({name, date, bgcover});
