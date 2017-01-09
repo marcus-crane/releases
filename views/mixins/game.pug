@@ -1,5 +1,5 @@
-mixin game(title, date, bgcover)
+mixin game(title, date, bgcover, strings)
     section#post(style={'background-image': 'url(' + bgcover + ')'})
         article#post
             h1 #{title}
-            h2 #{date}
+            h2 #{date.format("dddd, MMMM Do")}

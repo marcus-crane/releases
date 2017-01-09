@@ -8,10 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('bgcover');
     table.string('developer');
     table.string('publisher');
-    table.string('releaseQuarter');
-    table.integer('releaseDay');
-    table.string('releaseMonth');
-    table.integer('releaseYear');
+    table.string('releaseDate');
     table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
   });
 }
