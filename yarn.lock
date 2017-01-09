@@ -496,6 +496,12 @@ giantbombapi@^1.0.0:
     lodash "^3.10.1"
     request "^2.65.0"
 
+giantbombing-api@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/giantbombing-api/-/giantbombing-api-1.0.4.tgz#d32341556c5aeba1337e220c4191c506c7d75058"
+  dependencies:
+    request "^2.69.0"
+
 glob-base@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/glob-base/-/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4"
@@ -1187,7 +1193,7 @@ repeat-string@^1.5.2:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
 
-request@^2.65.0:
+request@^2.65.0, request@^2.69.0:
   version "2.79.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
   dependencies:

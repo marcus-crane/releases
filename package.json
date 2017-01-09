@@ -21,6 +21,7 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "giantbombapi": "^1.0.0",
+    "giantbombing-api": "^1.0.4",
     "gm": "^1.23.0",
     "knex": "^0.12.6",
     "pg": "^6.1.2",

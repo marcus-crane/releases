@@ -8,5 +8,5 @@ block content
     include mixins/game.pug
     div#wrapper
         each val in games
-            +game(val[0], val[1], val[2])
+            +game(val.name, val.date, val.bgcover)
     include partials/footer.pug
