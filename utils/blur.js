@@ -13,4 +13,4 @@ const blurImages = () => {
     })
 }
 
-module.exports = blurImages
+blurImages()
