@@ -59,11 +59,8 @@ section, article, h1, h2, p {
 /* Index Content */
 
 section#post {
-    background-size: 1000px;
     color: white;
     font-size: 18px;
-    border: 1px solid white;
-    margin-bottom: 2em;
     padding-top: 1em;
     padding-bottom: 1em;
 }
@@ -79,8 +76,7 @@ article#post h1, article#post h2, article#post p {
 article#post h1 {
     margin: 0;
     font-size: 2em;
-    -webkit-text-stroke: 0.9px black;
-    text-shadow: 1.6px 2.5px 0 #000;
+    text-shadow: 3px 4px 6px #000;
     -webkit-font-smoothing: antialised;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -135,7 +131,7 @@ footer a {
 
 @media (min-width: 600px) {
     section {
-        width: 75%;
+        width: 80%;
     }
 
     article {
@@ -170,7 +166,7 @@ footer a {
     }
 
     section {
-        width: 70%;
+        width: 85%;
     }
 
     article {
@@ -205,11 +201,7 @@ footer a {
     }
 
     section {
-        width: 75%;
-    }
-
-    section.post {
-        width: 75%;
+        width: 90%;
     }
 
     article {
