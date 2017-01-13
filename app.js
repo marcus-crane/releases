@@ -1,3 +1,4 @@
+// Base requirements
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -7,19 +8,23 @@ const app = express();
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
+// Route setup
+const routes = require('./routes/index');
+const api = require('./routes/api')
+
 // View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.locals.pretty = true;
 
 // Middleware Setup
-const routes = require('./routes/index');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route Setup
+// Plug the routes into the middleware
 app.use('/', routes);
+app.use('/api', api)
 
 // Catch 404s
 app.use((req, res, next) => {
