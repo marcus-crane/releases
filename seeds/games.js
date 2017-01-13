@@ -19,6 +19,8 @@ exports.seed = function(knex, Promise) {
         knex('games').insert({ title: 'South Park: The Fractured But Whole', bgcover: '/img/bgcover/south_park_the_fractured_but_whole.jpg', releaseDate: 'February 24, 2017' }),
         knex('games').insert({ title: 'Torment: Tides of Numenera', bgcover: '/img/bgcover/torment_tides_of_numenera.jpg', releaseDate: 'February 28, 2017' }),
         knex('games').insert({ title: 'Horizon: Zero Dawn', bgcover: '/img/bgcover/horizon_zero_dawn.jpg', releaseDate: 'March 1, 2017' }),
+        knex('games').insert({ title: 'Nintendo Switch', bgcover: '/img/bgcover/switch.jpg', releaseDate: 'March 3, 2017' })
+        knex('games').insert({ title: 'The Legend of Zelda: Breath of the Wild', bgcover: '/img/bgcover/the_legend_of_zelda_breath_of_the_wild.jpg', releaseDate: 'March 3, 2017'})
         knex('games').insert({ title: 'Tom Clancy\'s Ghost Recon: Wildlands', bgcover: '/img/bgcover/tom_clancys_ghost_recon_wildlands.jpg', releaseDate: 'March 7, 2017' }),
         knex('games').insert({ title: 'NieR: Automata', bgcover: '/img/bgcover/nier_automata.jpg', releaseDate: 'March 10, 2017' }),
         knex('games').insert({ title: 'Danganronpa 1 & 2 Reload', bgcover: '/img/bgcover/danganronpa_1_2_reload.jpg', releaseDate: 'March, 17, 2017' }),
