@@ -7,7 +7,7 @@ const moment = require('moment')
 const Knex = require('knex');
 const knexConfig = require('../knexfile');
 
-const knex = Knex(knexConfig['development']);
+const knex = Knex(knexConfig[process.env.NODE_ENV || 'development']);
 
 router.get('/', (req, res, next) => {
     knex('games')
