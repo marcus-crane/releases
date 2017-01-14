@@ -1,5 +1,5 @@
 mixin game(title, date, bgcover, strings)
-    section#post(style={'background-image': 'url(' + bgcover + ')'})
-        article#post
+    section.game(style={'background-image': 'url(' + bgcover + ')'})
+        article.details
             h1 #{title}
             h2 #{date.format("dddd, MMMM Do")}
