@@ -12,7 +12,6 @@ const knex = Knex(knexConfig['development']);
 router.get('/', (req, res, next) => {
     knex('games')
     .then((games) => {
-        // TODO Use object instead of an array
         let releases = []
         for (i in games) {
             let name = games[i].title;
