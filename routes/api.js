@@ -15,7 +15,7 @@ router.get('/month/:month', (req, res, next) => {
     if (month > 0 && month < 13) {
         // Months in Moment.js are zero indexed
         let monthName = moment().month(month - 1).format("MMMM");
-        knex.select('*').from('games').where('releaseDate', 'LIKE', `%${monthName}%`);
+        knex.select('*').from('games').where('releaseDate', 'LIKE', `%${monthName}%`)
         .then((games) => {
             let releases = [];
 
