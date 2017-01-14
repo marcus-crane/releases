@@ -20,7 +20,6 @@ app.locals.pretty = true;
 // Middleware Setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Plug the routes into the middleware
 app.use('/', routes);
