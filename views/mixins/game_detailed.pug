@@ -1,0 +1,5 @@
+mixin game_detailed(title, date, bgcover)
+    section.game(style={'background-image': 'url(' + bgcover + ')'})
+        article.details
+            h1 #{title}
+            h2 #{date.format("dddd, MMMM Do YYYY")}

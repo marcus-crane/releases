@@ -5,7 +5,7 @@ block title
 
 block content
     include partials/header.pug
-    include mixins/game.pug
+    include mixins/game_detailed.pug
     div#wrapper
-        +game(game.title, game.date, game.bgcover)
+        +game_detailed(game.title, game.date, game.bgcover)
     include partials/footer.pug
