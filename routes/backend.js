@@ -6,10 +6,9 @@ const gb = require('../utils/gb')
 
 const moment = require('moment')
 
-// const Knex = require('knex');
-// const knexConfig = require('../knexfile');
-
-// const knex = Knex(knexConfig[process.env.NODE_ENV || 'development']);
+const Knex = require('knex');
+const knexConfig = require('../knexfile');
+const knex = Knex(knexConfig[process.env.NODE_ENV || 'development']);
 
 router.get('/', (req, res, next) => {
     res.render('import')
@@ -17,8 +16,14 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-    console.log(req)
-    res.redirect('/backend')
+    knex('games').insert({ title: req.body.title, releaseDate: req.body.date, bgcover: req.body.bgcover })
+    .then((done) => {
+        console.log(`Added ${req.body.title} to the database.`)
+        res.redirect('/')
+    })
+    .catch((err) => {
+        console.log('I died!', err)
+    })
 })
 
 router.post('/confirm', (req, res, next) => {
@@ -31,7 +36,7 @@ router.post('/confirm', (req, res, next) => {
 
         game.title = games.data.results.name
         game.date = moment(`${games.data.results.original_release_date} GMT`)
-        game.bgcover = "http://scd.thingsima.de/img/bgcover/yakuza_0.jpg"
+        game.bgcover = "http://scd.thingsima.de/img/bgcover/placeholder.jpg"
 
         res.render('confirm', { "game": game })
     })
