@@ -11,6 +11,7 @@ const jsonParser = bodyParser.json();
 // Route setup
 const routes = require('./routes/index');
 const api = require('./routes/api')
+const backend = require('./routes/backend')
 
 // View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Plug the routes into the middleware
 app.use('/', routes);
 app.use('/api', api)
+app.use('/backend', backend)
 
 // Catch 404s
 app.use((req, res, next) => {
