@@ -25,7 +25,6 @@ router.get('/', (req, res, next) => {
             return a.date - b.date;
         })
 
-        console.log(releases);
         res.render('index', { "games": releases });
     });
 });

@@ -15,6 +15,12 @@ router.get('/', (req, res, next) => {
     res.render('import')
 })
 
+
+router.post('/', (req, res, next) => {
+    console.log(req)
+    res.redirect('/backend')
+})
+
 router.post('/confirm', (req, res, next) => {
     gb.queryByName(req.body.title)
     .then((games) => {
