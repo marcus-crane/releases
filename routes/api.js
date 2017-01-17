@@ -20,7 +20,18 @@ router.get('/month/:month', (req, res, next) => {
             let releases = [];
 
             for (i in games) {
-                releases.push({title: games[i].title, date: games[i].releaseDate});
+                let name = games[i].title;
+                let date = moment(`${games[i].releaseDate} GMT`);
+
+                releases.push({name, date});
+            }
+
+            releases.sort((a, b) => {
+                return a.date - b.date;
+            })
+
+            for (i in releases) {
+                releases[i].date = moment(releases[i].date).format("dddd, MMMM Do")
             }
 
             res.json({ releases });
