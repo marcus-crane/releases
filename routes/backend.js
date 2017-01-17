@@ -36,7 +36,7 @@ router.post('/confirm', (req, res, next) => {
 
         game.title = games.data.results.name
         game.date = moment(`${games.data.results.original_release_date} GMT`)
-        game.bgcover = "http://scd.thingsima.de/img/bgcover/placeholder.jpg"
+        game.bgcover = "http://files.thingsima.de/img/bgcover/placeholder.jpg"
 
         res.render('confirm', { "game": game })
     })
