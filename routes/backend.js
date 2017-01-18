@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-    knex('games').insert({ title: req.body.title, releaseDate: req.body.date, bgcover: req.body.bgcover })
+    knex('games').insert({ gb_id: req.body.gb_id, title: req.body.title, releaseDate: req.body.date, bgcover: req.body.bgcover, description: req.body.description, developer: req.body.developer, publisher: req.body.publisher })
     .then((done) => {
         console.log(`Added ${req.body.title} to the database.`)
         res.redirect('/')
@@ -35,9 +35,9 @@ router.post('/confirm', (req, res, next) => {
         let game = {}
         console.log(games.data.results.publishers)
 
+        // No platforms yet and forcing first in the devs/publishers
         game.gb_id = games.data.results.id
         game.title = games.data.results.name
-        game.platforms = games.data.results.platforms
         game.developers = games.data.results.developers[0].name
         game.publishers = games.data.results.publishers[0].name
         game.date = moment(`${games.data.results.original_release_date} GMT`)
