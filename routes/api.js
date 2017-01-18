@@ -27,7 +27,7 @@ router.get('/month/:month', (req, res, next) => {
                 let description = games[i].description;
                 let gb_id = games[i].gb_id;
 
-                releases.push({id, gb_id, name, date, description, developer, publisher});
+                releases.push({gb_id, name, date, description, developer, publisher});
             }
 
             releases.sort((a, b) => {
