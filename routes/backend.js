@@ -33,9 +33,15 @@ router.post('/confirm', (req, res, next) => {
     })
     .then((games) => {
         let game = {}
+        console.log(games.data.results.publishers)
 
+        game.gb_id = games.data.results.id
         game.title = games.data.results.name
+        game.platforms = games.data.results.platforms
+        game.developers = games.data.results.developers[0].name
+        game.publishers = games.data.results.publishers[0].name
         game.date = moment(`${games.data.results.original_release_date} GMT`)
+        game.description = games.data.results.deck
         game.bgcover = "http://files.thingsima.de/img/bgcover/placeholder.jpg"
 
         res.render('confirm', { "game": game })
