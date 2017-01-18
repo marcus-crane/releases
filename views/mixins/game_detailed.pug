@@ -1,10 +1,17 @@
-mixin game_detailed(title, date, bgcover)
+mixin game_detailed(title, date, bgcover, gb_id, developer, publisher, description)
     section.game(style={'background-image': 'url(' + bgcover + ')'})
         article.details
-            h1 #{title}
+            h1 #{gb_id} #{title}
             h2 #{date.format("dddd, MMMM Do YYYY")}
+            h2 #{developer}
+            h2 #{publisher}
+            h2 #{description}
     form(method="POST" action="/backend")
         input(type="hidden" name="title" value=title)
         input(type="hidden" name="date" value=date.format('MMMM D YYYY'))
         input(type="hidden" name="bgcover" value=bgcover)
+        input(type="hidden" name="gb_id" value=gb_id)
+        input(type="hidden" name="developer" value=developer)
+        input(type="hidden" name="publisher" value=publisher)
+        input(type="hidden" name="description" value=description)
         input(type="submit")

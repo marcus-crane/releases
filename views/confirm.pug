@@ -7,5 +7,5 @@ block content
     include partials/header.pug
     include mixins/game_detailed.pug
     div#wrapper
-        +game_detailed(game.title, game.date, game.bgcover)
+        +game_detailed(game.title, game.date, game.bgcover, game.gb_id, game.developer, game.publisher, game.description)
     include partials/footer.pug
