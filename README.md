@@ -7,6 +7,7 @@
 
 1. [What's this?](#what's-this)
 1. [What do I need to run it?](#what-do-i-need-to-run-it)
+1. [What features are you planning on adding?](#what-features-are-you-planning-on-adding)
 1. [Can I use Docker?](#can-i-use-docker)
 
 
@@ -40,6 +41,10 @@ At the moment, all you need is a Giant Bomb API Key which you can pick up [here]
 You'll then want to create a `.env` file with the key `GIANT_BOMB_API_KEY={key_goes_here}` or rename `example.env`.
 
 Eventually, I plan to add the ability to choose the background on-site when adding a new title and when I do, you'll likely need a Google Custom Search Engine key and general API key.
+
+### What features are you planning on adding?
+
+You can see what I'm considering adding under the [Issues](https://github.com/marcus-crane/releases/issues) and what I'm working on adding/about to work on under the [Projects](https://github.com/marcus-crane/releases/projects/2) tab.
 
 ### Can I use Docker?
 
