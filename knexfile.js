@@ -6,9 +6,9 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'releases',
-      user:     'postgres',
+      user: 'postgres',
       password: 'postgres',
-      port:     32768
+      port: 32768
     },
     pool: {
       min: 2,
@@ -23,7 +23,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'releases',
-      user:     'postgres',
+      user: 'postgres',
       password: 'postgres'
     },
     pool: {
@@ -39,9 +39,9 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'releases',
-      user:     'postgres',
+      user: 'postgres',
       password: 'postgres',
-      port:     32768
+      port: 32768
     },
     pool: {
       min: 2,
@@ -52,4 +52,4 @@ module.exports = {
     }
   }
 
-};
+}
