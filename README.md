@@ -11,7 +11,7 @@
 1. [Can I use Docker?](#can-i-use-docker)
 
 
-### What's this?
+## What's this?
 
 I was recently wondering what games were coming up and it's such an annoying process.
 
@@ -34,7 +34,7 @@ It was just meant to be a simple side project but I started to use it personally
 
 It's also a good testing ground for trying out new things I wouldn't otherwise have any reason to eg; any of the [V3 milestones](https://github.com/marcus-crane/releases/milestone/3).
 
-### What do I need to run it?
+## What do I need to run it?
 
 At the moment, all you need is a Giant Bomb API Key which you can pick up [here](http://www.giantbomb.com/api/) and a Postgres database.
 
@@ -42,11 +42,11 @@ You'll then want to create a `.env` file with the key `GIANT_BOMB_API_KEY={key_g
 
 Eventually, I plan to add the ability to choose the background on-site when adding a new title and when I do, you'll likely need a Google Custom Search Engine key and general API key.
 
-### What features are you planning on adding?
+## What features are you planning on adding?
 
 You can see what I'm considering adding under the [Issues](https://github.com/marcus-crane/releases/issues) and what I'm working on adding/about to work on under the [Projects](https://github.com/marcus-crane/releases/projects/2) tab.
 
-### Can I use Docker?
+## Can I use Docker?
 
 Sure, I use Docker for the production database and it was a pain in the butt to set up (initially) so here's a walkthrough for both of us.
 
