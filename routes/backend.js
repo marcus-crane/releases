@@ -44,6 +44,9 @@ router.post('/confirm', (req, res, next) => {
 
       res.render('confirm', { 'game': game })
     })
+    .catch((err) => {
+      console.log('Something broke', err)
+    })
 })
 
 module.exports = router
