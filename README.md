@@ -1,77 +1,32 @@
-## Releases
+# Releases
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcus-crane/releases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcus-crane/releases/?branch=master)
 
 
-### What?
+### What's this?
 
-I got fed up with there being no nice, simple to parse sites that show release dates for upcoming games so I just decided to make my own.
+I was recently wondering what games were coming up and it's such an annoying process.
 
-It's not done by any means but I may as well open source it in case anyone wants to poke around a bit.
+Specifically, I wished the sites were
 
-### It's messy
+- Single serving
+  - In the case of game journalism sites, release dates took the form of a wiki site or a blog post which wasn't the most efficient layout
+  - More "traditional" sites like Metacritic could take a lot of clicking to get the information I wanted. They primarily served other functions and keeping upcoming titles updated wasn't their focus
+- Easy to parse both visually and technically
+  - There's a number of lists that may be hugely comprehensive, like Giant Bomb, but there's almost too much data. It's hard to just glimpse at the information and be done.
+  - While Giant Bomb has an API, other sites just serve up plain HTML which can be a pain in the ass for requesting that data for other uses
+- Up to date
+  - Giant Bomb is great for this sorta stuff
+  - Wiki/blog post sites can take a long time to get updated with new titles.
+  - Publishers may push back dates or outright cancel games leading to confusion as to what dates are correct!
 
-Yeah, I know. It's very much just a thing I hack away at. I'm basically just making it up as I go along hence why you've got a utils folder containing code that doesn't seem to do anything.
+I had felt like this for a long time but finally got around to forming my own answer to this problem recently.
 
-Just testing what I want out of this thing since it's primarily for myself.
+It was just meant to be a simple side project but I started to use it personally so I've been adding more and more to it in between searching for my first proper development job.
 
-### What do I need?
+It's also a good testing ground for trying out new things I wouldn't otherwise have any reason to eg; any of the [V3 milestones](https://github.com/marcus-crane/releases/milestone/3).
 
-At the moment, just a Postgres container. You can see some docs about how I go about setting that up myself (and I have no idea if it's the correct way, haha!)
+### What do I need to run it?
 
-Optionally, if you want to use import.js in the utils folder, move `example.env` to `.env` and put a [Giant Bomb](http://giantbomb.com) API key in there.
-
-### Docker stuff you mentioned?
-
-Yeah, here it is:
-
-Pull a Postgres image from Docker's repository and check that it is running on the correct posts
-
-**NOTE**: You'll likely want to use Kitematic if you're on macOS but since I host this off a Linux Mint server w/ nginx, I've included "pure" terminal only instructions
-
-```
-docker run -d -p 5432:32768 postgres
-docker ps
-```
-
-You should see something like
-
-| CONTAINER ID | IMAGE    | COMMAND                | CREATED        | STATUS        | PORTS                             | NAMES           |
-| ------------ | -------- | ---------------------- | -------------- | ------------- | --------------------------------- | --------------- |
-| 18e167d5fc61 | postgres | "/docker-entrypoint.s" | 53 seconds ago | Up 52 seconds | 5432/tcp, 0.0.0.0:5432->32768/tcp | snapping_turtle **(OR PROBABLY JUST POSTGRES)** |
-
-Take note of the container name (which will be unique to your install and **may just be called postgres**) and run the following command
-
-```
-docker exec -it snapping_turtle bash
-```
-
-You should see a bash shell awaiting entry so go ahead and connect to postgres
-
-```
-root@18e167d5fc61:/# psql -U postgres
-psql (6.9.1)
-Type "help" for help
-```
-
-At this point, you'll want to create the database that the dummy data will be entered into
-
-```
-postgres=# CREATE DATABASE releases;
-```
-
-and check that it has been created properly
-
-```
-postgres=# \c releases
-You are now connected to database "releases" as user "postgres".
-```
-
-Now all you've got left is to run the migrations and seeds.
-
-```
-npm install knex -g (if you haven't already)
-knex migrate:latest
-knex seed:run
-```
+Yo
