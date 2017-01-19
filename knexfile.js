@@ -40,7 +40,8 @@ module.exports = {
     connection: {
       database: 'releases',
       user:     'postgres',
-      password: 'postgres'
+      password: 'postgres',
+      port:     32768
     },
     pool: {
       min: 2,

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const env = require('dotenv').config()
-const gb = require('../utils/queryGB')
+const gb = require('../lib/queryGB')
 
 const moment = require('moment')
 
