@@ -7,6 +7,6 @@ block content
     include partials/header.pug
     include mixins/game.pug
     div#wrapper
-        each val in games
-            +game(val.name, val.date, val.bgcover)
+        each entry in games
+            +game(entry.name, entry.date, entry.bgcover)
     include partials/footer.pug
