@@ -1,5 +1,9 @@
 ## Releases
 
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcus-crane/releases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcus-crane/releases/?branch=master)
+
+
 ### What?
 
 I got fed up with there being no nice, simple to parse sites that show release dates for upcoming games so I just decided to make my own.
