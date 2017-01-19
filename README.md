@@ -1,73 +1,116 @@
-## Releases
+# Releases (http://releases.thingsima.de)
 
-### What?
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcus-crane/releases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcus-crane/releases/?branch=master)
 
-I got fed up with there being no nice, simple to parse sites that show release dates for upcoming games so I just decided to make my own.
+## Table of Contents
 
-It's not done by any means but I may as well open source it in case anyone wants to poke around a bit.
+1. [What's this?](#what's-this)
+1. [What do I need to run it?](#what-do-i-need-to-run-it)
+1. [What features are you planning on adding?](#what-features-are-you-planning-on-adding)
+1. [Can I use Docker?](#can-i-use-docker)
 
-### It's messy
 
-Yeah, I know. It's very much just a thing I hack away at. I'm basically just making it up as I go along hence why you've got a utils folder containing code that doesn't seem to do anything.
+### What's this?
 
-Just testing what I want out of this thing since it's primarily for myself.
+I was recently wondering what games were coming up and it's such an annoying process.
 
-### What do I need?
+Specifically, I wished the sites were
 
-At the moment, just a Postgres container. You can see some docs about how I go about setting that up myself (and I have no idea if it's the correct way, haha!)
+- Single serving
+  - In the case of game journalism sites, release dates took the form of a wiki site or a blog post which wasn't the most efficient layout
+  - More "traditional" sites like Metacritic could take a lot of clicking to get the information I wanted. They primarily served other functions and keeping upcoming titles updated wasn't their focus
+- Easy to parse both visually and technically
+  - There's a number of lists that may be hugely comprehensive, like Giant Bomb, but there's almost too much data. It's hard to just glimpse at the information and be done.
+  - While Giant Bomb has an API, other sites just serve up plain HTML which can be a pain in the ass for requesting that data for other uses
+- Up to date
+  - Giant Bomb is great for this sorta stuff
+  - Wiki/blog post sites can take a long time to get updated with new titles.
+  - Publishers may push back dates or outright cancel games leading to confusion as to what dates are correct!
 
-Optionally, if you want to use import.js in the utils folder, move `example.env` to `.env` and put a [Giant Bomb](http://giantbomb.com) API key in there.
+I had felt like this for a long time but finally got around to forming my own answer to this problem recently.
 
-### Docker stuff you mentioned?
+It was just meant to be a simple side project but I started to use it personally so I've been adding more and more to it in between searching for my first proper development job.
 
-Yeah, here it is:
+It's also a good testing ground for trying out new things I wouldn't otherwise have any reason to eg; any of the [V3 milestones](https://github.com/marcus-crane/releases/milestone/3).
 
-Pull a Postgres image from Docker's repository and check that it is running on the correct posts
+### What do I need to run it?
 
-**NOTE**: You'll likely want to use Kitematic if you're on macOS but since I host this off a Linux Mint server w/ nginx, I've included "pure" terminal only instructions
+At the moment, all you need is a Giant Bomb API Key which you can pick up [here](http://www.giantbomb.com/api/) and a Postgres database.
+
+You'll then want to create a `.env` file with the key `GIANT_BOMB_API_KEY={key_goes_here}` or rename `example.env`.
+
+Eventually, I plan to add the ability to choose the background on-site when adding a new title and when I do, you'll likely need a Google Custom Search Engine key and general API key.
+
+### What features are you planning on adding?
+
+You can see what I'm considering adding under the [Issues](https://github.com/marcus-crane/releases/issues) and what I'm working on adding/about to work on under the [Projects](https://github.com/marcus-crane/releases/projects/2) tab.
+
+### Can I use Docker?
+
+Sure, I use Docker for the production database and it was a pain in the butt to set up (initially) so here's a walkthrough for both of us.
+
+You'll need to pull a Postgres image from the Docker repository and check that you've got the right ports.
+
+You should have `5432` as the internal port and anything you like as the external Docker port.
+
+**NOTE**: If you're using macOS, I can recommend using Kitematic which has a nice UI. The following are terminal instructions though for those who might be deploying on a headless server
+
+With the Docker image pulled, you'll want to run it, binding `32768` in this case, to `5432`.
+
+This means any requests we make to the database will need to hit Port `32768`, which you can see reflected in the development settings for knexfile.js.
+
+You can probably bind `5432` to `5432` but if you actually have a real install as well, you'll likely overwrite requests to it or cause a clash.
 
 ```
-docker run -d -p 5432:32768 postgres
+docker run -d -p 5423:32768 postgres
 docker ps
 ```
 
-You should see something like
+You should see something like this
 
-| CONTAINER ID | IMAGE    | COMMAND                | CREATED        | STATUS        | PORTS                             | NAMES           |
-| ------------ | -------- | ---------------------- | -------------- | ------------- | --------------------------------- | --------------- |
-| 18e167d5fc61 | postgres | "/docker-entrypoint.s" | 53 seconds ago | Up 52 seconds | 5432/tcp, 0.0.0.0:5432->32768/tcp | snapping_turtle **(OR PROBABLY JUST POSTGRES)** |
+| CONTAINER ID | IMAGE | COMMAND | CREATED | STATUS | PORTS | NAMES |
+| -- | -- | -- | -- | -- | -- | -- |
+| 18e167d5fc61 | postgres:latest | "/docker-entrypoint.s" | 3 weeks ago | Up 8 hours | 0.0.0.0:32768->5432/tcp | postgres
 
-Take note of the container name (which will be unique to your install and **may just be called postgres**) and run the following command
+Now that we have our container running, we'll need to actually create the database so that Knex can upload our migration tables and seed files.
 
 ```
-docker exec -it snapping_turtle bash
+docker exec -it {name} bash
 ```
 
-You should see a bash shell awaiting entry so go ahead and connect to postgres
+`{name}` in this case is the name in the table above so for me, it would be `postgres`
+
+You should see a bash shell within the docker container waiting for you to enter something so connect to postgres with the postgres user (or another user if you want to make one)
 
 ```
 root@18e167d5fc61:/# psql -U postgres
 psql (6.9.1)
 Type "help" for help
+
+postgres=#
 ```
 
-At this point, you'll want to create the database that the dummy data will be entered into
+Let's now create the database itself
 
 ```
 postgres=# CREATE DATABASE releases;
 ```
 
-and check that it has been created properly
+and connect to see that we've made it properly
 
 ```
 postgres=# \c releases
 You are now connected to database "releases" as user "postgres".
 ```
 
-Now all you've got left is to run the migrations and seeds.
+Now all we've got left to do is install Knex if you haven't done so (`npm install knex -g`) and run the migrations and seeds
 
 ```
-npm install knex -g (if you haven't already)
 knex migrate:latest
 knex seed:run
 ```
+
+If you get a `Connection Refused` error, make sure that you're specifying the correct port in `knexfile.js` or check that the container is running Kitematic.
+
+Mine stops after each restart and doesn't restart automatically on bootup.

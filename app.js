@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 
+const env = require('dotenv').config() // eslint-disable-line
+
 const app = express()
 const router = express.Router() // eslint-disable-line
 const jsonParser = bodyParser.json() // eslint-disable-line
