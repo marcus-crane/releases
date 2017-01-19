@@ -71,7 +71,7 @@ You should see something like this
 
 | CONTAINER ID | IMAGE | COMMAND | CREATED | STATUS | PORTS | NAMES |
 | -- | -- | -- | -- | -- | -- | -- |
-| 18e167d5fc61 | postgres:latest | "/docker-entrypoint.s" | 3 weeks ago | Up 8 hours | 0.0.0.0:32768->5432/tcp | postgres
+| 18e167d5fc61 | postgres:latest | "/docker-entrypoint.s" | 3 weeks ago | Up 8 hours | 0.0.0.0:32768->5432/tcp | postgres |
 
 Now that we have our container running, we'll need to actually create the database so that Knex can upload our migration tables and seed files.
 
