@@ -1,4 +1,4 @@
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   return knex('games').del()
     .then(function () {
       return Promise.all([
@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
         knex('games').insert({ title: 'Torment: Tides of Numenera', bgcover: 'http://files.thingsima.de/img/bgcover/torment_tides_of_numenera.jpg', releaseDate: 'February 28 2017' }),
         knex('games').insert({ title: 'Horizon: Zero Dawn', bgcover: 'http://files.thingsima.de/img/bgcover/horizon_zero_dawn.jpg', releaseDate: 'March 1 2017' }),
         knex('games').insert({ title: 'Nintendo Switch', bgcover: 'http://files.thingsima.de/img/bgcover/switch.jpg', releaseDate: 'March 3 2017' }),
-        knex('games').insert({ title: 'The Legend of Zelda: Breath of the Wild', bgcover: 'http://files.thingsima.de/img/bgcover/the_legend_of_zelda_breath_of_the_wild.jpg', releaseDate: 'March 3 2017'}),
+        knex('games').insert({ title: 'The Legend of Zelda: Breath of the Wild', bgcover: 'http://files.thingsima.de/img/bgcover/the_legend_of_zelda_breath_of_the_wild.jpg', releaseDate: 'March 3 2017' }),
         knex('games').insert({ title: 'Tom Clancy\'s Ghost Recon: Wildlands', bgcover: 'http://files.thingsima.de/img/bgcover/tom_clancys_ghost_recon_wildlands.jpg', releaseDate: 'March 7 2017' }),
         knex('games').insert({ title: 'NieR: Automata', bgcover: 'http://files.thingsima.de/img/bgcover/nier_automata.jpg', releaseDate: 'March 10 2017' }),
         knex('games').insert({ title: 'Danganronpa 1 & 2 Reload', bgcover: 'http://files.thingsima.de/img/bgcover/danganronpa_1_2_reload.jpg', releaseDate: 'March, 17 2017' }),
@@ -29,7 +29,7 @@ exports.seed = function(knex, Promise) {
         knex('games').insert({ title: 'Persona 5', bgcover: 'http://files.thingsima.de/img/bgcover/persona_5.jpg', releaseDate: 'April 4 2017' }),
         knex('games').insert({ title: 'Yooka-Laylee', bgcover: 'http://files.thingsima.de/img/bgcover/yooka_laylee.jpg', releaseDate: 'April 11 2017' }),
         knex('games').insert({ title: 'The Silver Case', bgcover: 'http://files.thingsima.de/img/bgcover/the_silver_case.jpg', releaseDate: 'April 21 2017' }),
-        knex('games').insert({ title: 'Dragon Quest Heroes II', bgcover: 'http://files.thingsima.de/img/bgcover/dragon_quest_heroes_2.jpg', releaseDate: 'April 28 2017' }),
-      ]);
-    });
+        knex('games').insert({ title: 'Dragon Quest Heroes II', bgcover: 'http://files.thingsima.de/img/bgcover/dragon_quest_heroes_2.jpg', releaseDate: 'April 28 2017' })
+      ])
+    })
 }
