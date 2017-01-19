@@ -1,7 +1,7 @@
 {
-  "name": "releases",
+  "name": "upcomingreleases",
   "version": "1.0.0",
-  "description": "A release tracker",
+  "description": "A release tracker for upcoming videogames",
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=development node app.js",
