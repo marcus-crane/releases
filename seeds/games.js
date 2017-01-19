@@ -2,7 +2,7 @@ exports.seed = function(knex, Promise) {
   return knex('games').del()
     .then(function () {
       return Promise.all([
-        knex('games').insert({ title: 'Gravity Rush 2', bgcover: 'http://files.thingsima.de/img/bgcover/gravity_rush_2.jpg', releaseDate: 'January 18 2017' }),
+        // knex('games').insert({ title: 'Gravity Rush 2', bgcover: 'http://files.thingsima.de/img/bgcover/gravity_rush_2.jpg', releaseDate: 'January 18 2017' }),
         knex('games').insert({ title: 'Dragon Quest VIII: Journey of the Cursed King', bgcover: 'http://files.thingsima.de/img/bgcover/dragon_quest_viii.jpg', releaseDate: 'January 21 2017' }),
         knex('games').insert({ title: 'Kingdom Hearts HD 2.8 Final Chapter Prologue', bgcover: 'http://files.thingsima.de/img/bgcover/kingdom_hearts_hd_2.8.jpg', releaseDate: 'January 24 2017' }),
         knex('games').insert({ title: 'Resident Evil 7: Biohazard', bgcover: 'http://files.thingsima.de/img/bgcover/resident_evil_7.jpg', releaseDate: 'January 24 2017' }),
