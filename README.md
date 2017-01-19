@@ -1,7 +1,13 @@
-# Releases
+# Releases (http://releases.thingsima.de)
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcus-crane/releases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcus-crane/releases/?branch=master)
+
+## Table of Contents
+
+1. [What's this?](#what's-this)
+2. [What do I need to run it?](#what-do-i-need-to-run-it)
+3. [Can I use Docker?](#can-i-use-docker)
 
 
 ### What's this?
@@ -29,4 +35,10 @@ It's also a good testing ground for trying out new things I wouldn't otherwise h
 
 ### What do I need to run it?
 
-Yo
+At the moment, all you need is a Giant Bomb API Key which you can pick up [here](http://www.giantbomb.com/api/) and a Postgres database.
+
+You'll then want to create a `.env` file with the key `GIANT_BOMB_API_KEY={key_goes_here}` or rename `example.env`.
+
+Eventually, I plan to add the ability to choose the background on-site when adding a new title and when I do, you'll likely need a Google Custom Search Engine key and general API key.
+
+### Can I use Docker?
