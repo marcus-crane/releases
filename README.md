@@ -6,8 +6,8 @@
 ## Table of Contents
 
 1. [What's this?](#what's-this)
-2. [What do I need to run it?](#what-do-i-need-to-run-it)
-3. [Can I use Docker?](#can-i-use-docker)
+1. [What do I need to run it?](#what-do-i-need-to-run-it)
+1. [Can I use Docker?](#can-i-use-docker)
 
 
 ### What's this?
@@ -42,3 +42,70 @@ You'll then want to create a `.env` file with the key `GIANT_BOMB_API_KEY={key_g
 Eventually, I plan to add the ability to choose the background on-site when adding a new title and when I do, you'll likely need a Google Custom Search Engine key and general API key.
 
 ### Can I use Docker?
+
+Sure, I use Docker for the production database and it was a pain in the butt to set up (initially) so here's a walkthrough for both of us.
+
+You'll need to pull a Postgres image from the Docker repository and check that you've got the right ports.
+
+You should have `5432` as the internal port and anything you like as the external Docker port.
+
+**NOTE**: If you're using macOS, I can recommend using Kitematic which has a nice UI. The following are terminal instructions though for those who might be deploying on a headless server
+
+With the Docker image pulled, you'll want to run it, binding `32768` in this case, to `5432`.
+
+This means any requests we make to the database will need to hit Port `32768`, which you can see reflected in the development settings for knexfile.js.
+
+You can probably bind `5432` to `5432` but if you actually have a real install as well, you'll likely overwrite requests to it or cause a clash.
+
+```
+docker run -d -p 5423:32768 postgres
+docker ps
+```
+
+You should see something like this
+
+| CONTAINER ID | IMAGE | COMMAND | CREATED | STATUS | PORTS | NAMES |
+| -- | -- | -- | -- | -- | -- | -- |
+| 18e167d5fc61 | postgres:latest | "/docker-entrypoint.s" | 3 weeks ago | Up 8 hours | 0.0.0.0:32768->5432/tcp | postgres
+
+Now that we have our container running, we'll need to actually create the database so that Knex can upload our migration tables and seed files.
+
+```
+docker exec -it {name} bash
+```
+
+`{name}` in this case is the name in the table above so for me, it would be `postgres`
+
+You should see a bash shell within the docker container waiting for you to enter something so connect to postgres with the postgres user (or another user if you want to make one)
+
+```
+root@18e167d5fc61:/# psql -U postgres
+psql (6.9.1)
+Type "help" for help
+
+postgres=#
+```
+
+Let's now create the database itself
+
+```
+postgres=# CREATE DATABASE releases;
+```
+
+and connect to see that we've made it properly
+
+```
+postgres=# \c releases
+You are now connected to database "releases" as user "postgres".
+```
+
+Now all we've got left to do is install Knex if you haven't done so (`npm install knex -g`) and run the migrations and seeds
+
+```
+knex migrate:latest
+knex seed:run
+```
+
+If you get a `Connection Refused` error, make sure that you're specifying the correct port in `knexfile.js` or check that the container is running Kitematic.
+
+Mine stops after each restart and doesn't restart automatically on bootup.
