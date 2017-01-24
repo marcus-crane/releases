@@ -30,32 +30,27 @@ router.post('/confirm', (req, res, next) => {
       let results = []
 
       for (let i in games.data.results) {
-        let title = games.data.results[i].name
-        let date = games.data.results[i].original_release_date.slice(0,4)
-        results.push(`${title} (${date})`)
+        let name = games.data.results[i].name
+        let date = moment(`${games.data.results[i].original_release_date} GMT`)
+        let bgcover = games.data.results[i].image.medium_url
+        results.push({name, date, bgcover})
       }
 
-      res.json({ results })
-      // res.send( 'Check terminal')
-      // return gb.queryByID(games.data.results[0].id)
+      results.sort((a, b) => {
+        return b.date - a.date
+      })
+
+      res.render('index', { 'games': results, 'header': 'Search Results', 'tagline': 'One of these lucky titles might make it into the database!' })
     })
-    // .then((games) => {
-    //   let game = {}
-    //   console.log(games.data.results.publishers)
-
-    //     // No platforms yet and forcing first in the devs/publishers
-    //   game.gb_id = games.data.results.id
-    //   game.title = games.data.results.name
-    //   game.developer = games.data.results.developers[0].name
-    //   game.publisher = games.data.results.publishers[0].name
-    //   game.date = moment(`${games.data.results.original_release_date} GMT`)
-    //   game.description = games.data.results.deck
-    //   game.bgcover = 'http://files.thingsima.de/img/bgcover/placeholder.jpg'
-
-    //   res.render('confirm', { 'game': game })
-    // })
     .catch((err) => {
       console.log('Something broke', err)
+    })
+})
+
+router.post('/details', (req, res, next) => {
+  gb.queryByName('req.params.name')
+    .then((game) => {
+      console.log(game)
     })
 })
 
