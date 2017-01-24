@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
       res.redirect('/')
     })
     .catch((err) => {
-      console.log('I died!', err)
+      console.log(`Failed to insert ${req.body.title} into database`, err)
     })
 })
 
@@ -44,12 +44,29 @@ router.post('/results', (req, res, next) => {
       res.render('search', { 'games': results, 'header': 'Search Results', 'tagline': 'One of these lucky titles might make it into the database!' })
     })
     .catch((err) => {
-      console.log('Something broke', err)
+      console.log('Failed to fetch search results', err)
     })
 })
 
 router.get('/add/:title', (req, res, next) => {
-  res.send(req.params.title)
+  gb.queryByName(req.params.title)
+    .then((res) => {
+      console.log(res.data.results)
+      let game = {}
+
+      game.title = res.data.results[0].name
+      game.date = res.data.results[0].actual_release_date
+      game.bgcover = res.data.results[0].image.medium_url
+      game.gb_id = res.data.results[0].gbid
+      game.developer = res.data.results[0].developers[0]
+      game.publisher = req.data.results[0].publishers[0]
+      game.description = req.data.results[0].deck
+
+      res.send(game)
+    })
+    .catch((err) => {
+      console.log(`Failed to fetch ${req.params.title}`, err)
+    })
 })
 
 module.exports = router
