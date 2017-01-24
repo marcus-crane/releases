@@ -5,8 +5,8 @@ block title
 
 block content
     include partials/header.pug
-    include mixins/game.pug
+    include mixins/search.pug
     div#wrapper
-        each entry in results
-            +game(entry.name, entry.date, entry.bgcover)
+        each entry in games
+            +result(entry.name, entry.date, entry.bgcover, entry.description)
     include partials/footer.pug

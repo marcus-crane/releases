@@ -33,25 +33,23 @@ router.post('/confirm', (req, res, next) => {
         let name = games.data.results[i].name
         let date = moment(`${games.data.results[i].original_release_date} GMT`)
         let bgcover = games.data.results[i].image.medium_url
-        results.push({name, date, bgcover})
+        let description = games.data.results[i].deck
+        results.push({ name, date, bgcover, description })
       }
 
       results.sort((a, b) => {
         return b.date - a.date
       })
 
-      res.render('index', { 'games': results, 'header': 'Search Results', 'tagline': 'One of these lucky titles might make it into the database!' })
+      res.render('search', { 'games': results, 'header': 'Search Results', 'tagline': 'One of these lucky titles might make it into the database!' })
     })
     .catch((err) => {
       console.log('Something broke', err)
     })
 })
 
-router.post('/details', (req, res, next) => {
-  gb.queryByName('req.params.name')
-    .then((game) => {
-      console.log(game)
-    })
+router.get('/test', (req, res, next) => {
+  res.send('Success')
 })
 
 module.exports = router
