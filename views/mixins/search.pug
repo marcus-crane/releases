@@ -1,7 +1,7 @@
 mixin result(title, date, bgcover,description)
     section.game(style={'background-image': 'url(' + bgcover + ')'})
         article.details
-            a(href="/test")
+            a(href="/backend/add/" + title)
                 h1 #{title}
             h2 #{date.format("dddd, MMMM Do")}
             p #{description}

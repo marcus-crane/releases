@@ -10,7 +10,7 @@ const knexConfig = require('../knexfile')
 const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
 router.get('/', (req, res, next) => {
-  res.render('import')
+  res.render('import', { 'header': 'Search for a title', 'tagline': 'What games are we missing from the database?' })
 })
 
 router.post('/', (req, res, next) => {
@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
     })
 })
 
-router.post('/confirm', (req, res, next) => {
+router.post('/results', (req, res, next) => {
   gb.queryMultiple(req.body.title)
     .then((games) => {
       let results = []
@@ -48,8 +48,8 @@ router.post('/confirm', (req, res, next) => {
     })
 })
 
-router.get('/test', (req, res, next) => {
-  res.send('Success')
+router.get('/add/:title', (req, res, next) => {
+  res.send(req.params.title)
 })
 
 module.exports = router
