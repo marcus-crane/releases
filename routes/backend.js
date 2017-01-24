@@ -50,19 +50,8 @@ router.post('/results', (req, res, next) => {
 
 router.get('/add/:title', (req, res, next) => {
   gb.queryByName(req.params.title)
-    .then((res) => {
-      console.log(res.data.results)
-      let game = {}
-
-      game.title = res.data.results[0].name
-      game.date = res.data.results[0].actual_release_date
-      game.bgcover = res.data.results[0].image.medium_url
-      game.gb_id = res.data.results[0].gbid
-      game.developer = res.data.results[0].developers[0]
-      game.publisher = req.data.results[0].publishers[0]
-      game.description = req.data.results[0].deck
-
-      res.send(game)
+    .then((game) => {
+      res.json(game.data.results)
     })
     .catch((err) => {
       console.log(`Failed to fetch ${req.params.title}`, err)
