@@ -25,25 +25,35 @@ router.post('/', (req, res, next) => {
 })
 
 router.post('/confirm', (req, res, next) => {
-  gb.queryByName(req.body.title)
+  gb.queryMultiple(req.body.title)
     .then((games) => {
-      return gb.queryByID(games.data.results[0].id)
-    })
-    .then((games) => {
-      let game = {}
-      console.log(games.data.results.publishers)
+      let results = []
 
-        // No platforms yet and forcing first in the devs/publishers
-      game.gb_id = games.data.results.id
-      game.title = games.data.results.name
-      game.developer = games.data.results.developers[0].name
-      game.publisher = games.data.results.publishers[0].name
-      game.date = moment(`${games.data.results.original_release_date} GMT`)
-      game.description = games.data.results.deck
-      game.bgcover = 'http://files.thingsima.de/img/bgcover/placeholder.jpg'
+      for (let i in games.data.results) {
+        let title = games.data.results[i].name
+        let date = games.data.results[i].original_release_date.slice(0,4)
+        results.push(`${title} (${date})`)
+      }
 
-      res.render('confirm', { 'game': game })
+      res.json({ results })
+      // res.send( 'Check terminal')
+      // return gb.queryByID(games.data.results[0].id)
     })
+    // .then((games) => {
+    //   let game = {}
+    //   console.log(games.data.results.publishers)
+
+    //     // No platforms yet and forcing first in the devs/publishers
+    //   game.gb_id = games.data.results.id
+    //   game.title = games.data.results.name
+    //   game.developer = games.data.results.developers[0].name
+    //   game.publisher = games.data.results.publishers[0].name
+    //   game.date = moment(`${games.data.results.original_release_date} GMT`)
+    //   game.description = games.data.results.deck
+    //   game.bgcover = 'http://files.thingsima.de/img/bgcover/placeholder.jpg'
+
+    //   res.render('confirm', { 'game': game })
+    // })
     .catch((err) => {
       console.log('Something broke', err)
     })
