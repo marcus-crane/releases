@@ -1,0 +1,12 @@
+extends layout.pug
+
+block title
+    title Search results
+
+block content
+    include partials/header.pug
+    include mixins/search.pug
+    div#wrapper
+        each entry in games
+            +result(entry.name, entry.date, entry.bgcover, entry.description)
+    include partials/footer.pug
