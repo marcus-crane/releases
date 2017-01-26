@@ -8,5 +8,5 @@ block content
     include mixins/search.pug
     div#wrapper
         each entry in games
-            +result(entry.name, entry.date, entry.bgcover, entry.description)
+            +result(entry.name, entry.gbid, entry.date, entry.bgcover, entry.description)
     include partials/footer.pug
