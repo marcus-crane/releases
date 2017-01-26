@@ -25,7 +25,7 @@ router.post('/', (req, res, next) => {
 })
 
 router.post('/results', (req, res, next) => {
-  gb.queryMultiple(req.body.title)
+  gb.queryByName(req.body.title)
     .then((games) => {
       let results = []
 
