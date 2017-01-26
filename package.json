@@ -6,6 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development node app.js",
     "start-prod": "NODE_ENV=production node app.js",
+    "reset-db": "knex migrate:latest && knex seed:run",
     "lint": "standard",
     "test": "npm run lint"
   },
