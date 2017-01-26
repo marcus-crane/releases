@@ -9,7 +9,7 @@ const knexConfig = require('../knexfile')
 const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
 router.get('/', (req, res, next) => {
-  res.send('At the moment, the only endpoint is /month/. You can either just visit <a href="/api/month">/month/</a> to see the entire database or visit <a href="/api/month/3">/month/{monthnumber}</a> where monthnumber is between 1 (Jan) and 12 (Dec). Yeah, it\s not zero indexed ;)')
+  res.send('At the moment, the only endpoint is /month/. You can either just visit <a href="/api/month">/month/</a> to see the entire database or visit <a href="/api/month/3">/month/{monthnumber}</a> where monthnumber is between 1 (Jan) and 12 (Dec). Yeah, it\'s not zero indexed ;)')
 })
 
 router.get('/month', (req, res, next) => {
@@ -46,7 +46,7 @@ router.get('/month', (req, res, next) => {
 router.get('/month/:month', (req, res, next) => {
   let month = parseInt(req.params.month)
 
-  if (month > 0 && month < 13 && month !== "all") {
+  if (month > 0 && month < 13) {
     // Months in Moment.js are zero indexed
     let monthName = moment().month(month - 1).format('MMMM')
     knex.select('*').from('games').where('releaseDate', 'LIKE', `%${monthName}%`)
