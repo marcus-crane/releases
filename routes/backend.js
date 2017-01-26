@@ -67,7 +67,7 @@ router.get('/add/:id', (req, res, next) => {
     })
     .catch((err) => {
       console.log(`Failed to fetch ${req.params.title}`, err)
-      res.send(`Oops, couldn\'t fetch ${req.params.title}! Check the terminal.`)
+      res.send(`Oops, couldn't fetch ${req.params.title}! Check the terminal.`)
     })
 })
 
