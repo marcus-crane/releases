@@ -1,5 +1,5 @@
 {
-  "name": "upcomingreleases",
+  "name": "vgdates",
   "version": "1.0.0",
   "description": "A release tracker for upcoming videogames",
   "main": "app.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcus-crane/releases.git"
+    "url": "git+https://github.com/marcus-crane/vgdates.git"
   },
   "author": "Marcus <marcus@thingsima.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcus-crane/releases/issues"
+    "url": "https://github.com/marcus-crane/vgdates/issues"
   },
-  "homepage": "https://github.com/marcus-crane/releases#readme",
+  "homepage": "https://github.com/marcus-crane/vgdates#readme",
   "dependencies": {
     "axios": "^0.15.3",
     "body-parser": "^1.15.2",

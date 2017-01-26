@@ -1,4 +1,4 @@
-# Releases (http://releases.thingsima.de)
+# VGDates (http://vgdat.es)
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcus-crane/releases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcus-crane/releases/?branch=master)
@@ -8,6 +8,7 @@
 1. [What's this?](#what's-this)
 1. [What do I need to run it?](#what-do-i-need-to-run-it)
 1. [What features are you planning on adding?](#what-features-are-you-planning-on-adding)
+1. [I want to contribute! What do I need to know?](#i-want-to-contribute-what-do-i-need-to-know)
 1. [Can I use Docker?](#can-i-use-docker)
 
 
@@ -44,8 +45,15 @@ Eventually, I plan to add the ability to choose the background on-site when addi
 
 ## What features are you planning on adding?
 
-You can see what I'm considering adding under the [Issues](https://github.com/marcus-crane/releases/issues) and what I'm working on adding/about to work on under the [Projects](https://github.com/marcus-crane/releases/projects/2) tab.
+You can see what I'm considering adding under the [Issues](https://github.com/marcus-crane/releases/issues) and what I'm working on adding/about to work on under the [Projects](https://github.com/marcus-crane/vgdates/projects/2) tab.
 
+## I want to contribute! What do I need to know?
+
+At the moment, this is purely a personal project. As it's purely for learning, I'd at least like to V1 up and launched by myself.
+
+I'd definitely welcome suggestions on improving what I've already written though, just not necessarily new features.
+
+I know for sure there's a decent amount of the "DRY" principle being violated, especially in the backend routes!
 ## Can I use Docker?
 
 Sure, I use Docker for the production database and it was a pain in the butt to set up (initially) so here's a walkthrough for both of us.
@@ -94,14 +102,14 @@ postgres=#
 Let's now create the database itself
 
 ```
-postgres=# CREATE DATABASE releases;
+postgres=# CREATE DATABASE vgdates;
 ```
 
 and connect to see that we've made it properly
 
 ```
-postgres=# \c releases
-You are now connected to database "releases" as user "postgres".
+postgres=# \c vgdates
+You are now connected to database "vgdates" as user "postgres".
 ```
 
 Now all we've got left to do is install Knex if you haven't done so (`npm install knex -g`) and run the migrations and seeds
