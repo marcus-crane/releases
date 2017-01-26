@@ -2,4 +2,4 @@ mixin game(title, date, bgcover)
     section.game(style={'background-image': 'url(' + bgcover + ')'})
         article.details
             h1 #{title}
-            h2 #{date.format("dddd, MMMM Do")}
+            h2 #{date.format("MMMM Do, YYYY")}

@@ -25,16 +25,17 @@ router.post('/', (req, res, next) => {
 })
 
 router.post('/results', (req, res, next) => {
-  gb.queryMultiple(req.body.title)
+  gb.queryByName(req.body.title)
     .then((games) => {
       let results = []
 
       for (let i in games.data.results) {
         let name = games.data.results[i].name
+        let gbid = games.data.results[i].id
         let date = moment(`${games.data.results[i].original_release_date} GMT`)
         let bgcover = games.data.results[i].image.medium_url
         let description = games.data.results[i].deck
-        results.push({ name, date, bgcover, description })
+        results.push({ name, gbid, date, bgcover, description })
       }
 
       results.sort((a, b) => {
@@ -45,16 +46,28 @@ router.post('/results', (req, res, next) => {
     })
     .catch((err) => {
       console.log('Failed to fetch search results', err)
+      res.send('Weird, we didn\'t get any search results! Have a look at the terminal.')
     })
 })
 
-router.get('/add/:title', (req, res, next) => {
-  gb.queryByName(req.params.title)
+router.get('/add/:id', (req, res, next) => {
+  gb.queryByID(req.params.id)
     .then((game) => {
-      res.json(game.data.results)
+      let entry = {}
+
+      entry.name = game.data.results.name
+      entry.gb_id = game.data.results.id
+      entry.developer = game.data.results.developers[0].name
+      entry.publisher = game.data.results.publishers[0].name
+      entry.date = moment(`${game.data.results.original_release_date} GMT`)
+      entry.bgcover = game.data.results.image.medium_url
+      entry.description = game.data.results.deck
+
+      res.render('confirm', { 'game': entry, 'header': 'Confirm details', 'tagline': `Here's what we could find about ${entry.name}` })
     })
     .catch((err) => {
       console.log(`Failed to fetch ${req.params.title}`, err)
+      res.send(`Oops, couldn't fetch ${req.params.title}! Check the terminal.`)
     })
 })
 
