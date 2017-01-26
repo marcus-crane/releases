@@ -10,7 +10,7 @@ const knexConfig = require('../knexfile')
 const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
 
 router.get('/', (req, res, next) => {
-  res.render('import')
+  res.render('import', { 'header': 'Search for a title', 'tagline': 'What games are we missing from the database?' })
 })
 
 router.post('/', (req, res, next) => {
@@ -20,32 +20,54 @@ router.post('/', (req, res, next) => {
       res.redirect('/')
     })
     .catch((err) => {
-      console.log('I died!', err)
+      console.log(`Failed to insert ${req.body.title} into database`, err)
     })
 })
 
-router.post('/confirm', (req, res, next) => {
+router.post('/results', (req, res, next) => {
   gb.queryByName(req.body.title)
     .then((games) => {
-      return gb.queryByID(games.data.results[0].id)
-    })
-    .then((games) => {
-      let game = {}
-      console.log(games.data.results.publishers)
+      let results = []
 
-        // No platforms yet and forcing first in the devs/publishers
-      game.gb_id = games.data.results.id
-      game.title = games.data.results.name
-      game.developer = games.data.results.developers[0].name
-      game.publisher = games.data.results.publishers[0].name
-      game.date = moment(`${games.data.results.original_release_date} GMT`)
-      game.description = games.data.results.deck
-      game.bgcover = 'http://files.thingsima.de/img/bgcover/placeholder.jpg'
+      for (let i in games.data.results) {
+        let name = games.data.results[i].name
+        let gbid = games.data.results[i].id
+        let date = moment(`${games.data.results[i].original_release_date} GMT`)
+        let bgcover = games.data.results[i].image.medium_url
+        let description = games.data.results[i].deck
+        results.push({ name, gbid, date, bgcover, description })
+      }
 
-      res.render('confirm', { 'game': game })
+      results.sort((a, b) => {
+        return b.date - a.date
+      })
+
+      res.render('search', { 'games': results, 'header': 'Search Results', 'tagline': 'One of these lucky titles might make it into the database!' })
     })
     .catch((err) => {
-      console.log('Something broke', err)
+      console.log('Failed to fetch search results', err)
+      res.send('Weird, we didn\'t get any search results! Have a look at the terminal.')
+    })
+})
+
+router.get('/add/:id', (req, res, next) => {
+  gb.queryByID(req.params.id)
+    .then((game) => {
+      let entry = {}
+
+      entry.name = game.data.results.name
+      entry.gb_id = game.data.results.id
+      entry.developer = game.data.results.developers[0].name
+      entry.publisher = game.data.results.publishers[0].name
+      entry.date = moment(`${game.data.results.original_release_date} GMT`)
+      entry.bgcover = game.data.results.image.medium_url
+      entry.description = game.data.results.deck
+
+      res.render('confirm', { 'game': entry, 'header': 'Confirm details', 'tagline': `Here's what we could find about ${entry.name}` })
+    })
+    .catch((err) => {
+      console.log(`Failed to fetch ${req.params.title}`, err)
+      res.send(`Oops, couldn't fetch ${req.params.title}! Check the terminal.`)
     })
 })
 

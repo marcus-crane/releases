@@ -24,7 +24,7 @@ router.get('/', (req, res, next) => {
         return a.date - b.date
       })
 
-      res.render('index', { 'games': releases })
+      res.render('index', { 'games': releases, 'header': 'Upcoming Releases', 'tagline': 'Gosh, this is much simpler than those silly Metacritic lists!' })
     })
 })
 
