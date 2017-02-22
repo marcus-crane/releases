@@ -14,11 +14,11 @@ router.get('/', (req, res, next) => {
       let releases = []
       for (let i in games) {
         if (moment(games[i].releaseDate).isAfter(Date.now())) {
-            let name = games[i].title
-            let date = moment(`${games[i].releaseDate} GMT`)
-            let bgcover = games[i].bgcover
+          let name = games[i].title
+          let date = moment(`${games[i].releaseDate} GMT`)
+          let bgcover = games[i].bgcover
 
-            releases.push({name, date, bgcover})
+          releases.push({name, date, bgcover})
         }
       }
 
