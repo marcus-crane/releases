@@ -13,11 +13,13 @@ router.get('/', (req, res, next) => {
     .then((games) => {
       let releases = []
       for (let i in games) {
-        let name = games[i].title
-        let date = moment(`${games[i].releaseDate} GMT`)
-        let bgcover = games[i].bgcover
+        if (moment(games[i].releaseDate).isAfter(Date.now())) {
+            let name = games[i].title
+            let date = moment(`${games[i].releaseDate} GMT`)
+            let bgcover = games[i].bgcover
 
-        releases.push({name, date, bgcover})
+            releases.push({name, date, bgcover})
+        }
       }
 
       releases.sort((a, b) => {
