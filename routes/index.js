@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
         if (moment(games[i].releaseDate).isAfter(Date.now())) {
           let name = games[i].title
           let date = moment(`${games[i].releaseDate}`)
-          console.log(date)
           let bgcover = games[i].bgcover
 
           releases.push({name, date, bgcover})

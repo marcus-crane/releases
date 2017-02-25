@@ -32,10 +32,16 @@ router.post('/results', (req, res, next) => {
       for (let i in games.data.results) {
         let name = games.data.results[i].name
         let gbid = games.data.results[i].id
-        let date = moment(`${games.data.results[i].original_release_date} GMT`)
+        let date = moment(`
+            ${games.data.results[i].expected_release_year}-
+            ${games.data.results[i].expected_release_month}-
+            ${games.data.results[i].expected_release_day}
+            `)
         let bgcover = games.data.results[i].image.medium_url
         let description = games.data.results[i].deck
-        results.push({ name, gbid, date, bgcover, description })
+        if (moment(date).isValid()) {
+          results.push({ name, gbid, date, bgcover, description })
+        }
       }
 
       results.sort((a, b) => {
@@ -59,15 +65,19 @@ router.get('/add/:id', (req, res, next) => {
       entry.gb_id = game.data.results.id
       entry.developer = game.data.results.developers[0].name
       entry.publisher = game.data.results.publishers[0].name
-      entry.date = moment(`${game.data.results.original_release_date} GMT`)
+      entry.date = moment(`
+          ${game.data.results.expected_release_year}-
+          ${game.data.results.expected_release_month}-
+          ${game.data.results.expected_release_day}
+          `)
       entry.bgcover = game.data.results.image.medium_url
       entry.description = game.data.results.deck
 
       res.render('confirm', { 'game': entry, 'header': 'Confirm details', 'tagline': `Here's what we could find about ${entry.name}` })
     })
     .catch((err) => {
-      console.log(`Failed to fetch ${req.params.title}`, err)
-      res.send(`Oops, couldn't fetch ${req.params.title}! Check the terminal.`)
+      console.log(`Failed to fetch ${req.params.id}`, err)
+      res.send(`Oops, couldn't fetch ${req.params.id}! Check the terminal.`)
     })
 })
 

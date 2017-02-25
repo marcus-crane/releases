@@ -8,7 +8,7 @@ mixin confirm_game_details(title, date, bgcover, gb_id, developer, publisher, de
             h2 #{description}
     form(method="POST" action="/backend")
         input(type="hidden" name="title" value=title)
-        input(type="hidden" name="date" value=date.format('MMMM D YYYY'))
+        input(type="hidden" name="date" value=date.format('YYYY-MM-DD'))
         input(type="hidden" name="bgcover" value=bgcover)
         input(type="hidden" name="gb_id" value=gb_id)
         input(type="hidden" name="developer" value=developer)
