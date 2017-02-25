@@ -40,7 +40,7 @@ router.post('/results', (req, res, next) => {
         let bgcover = games.data.results[i].image.medium_url
         let description = games.data.results[i].deck
         if (moment(date).isValid()) {
-            results.push({ name, gbid, date, bgcover, description })
+          results.push({ name, gbid, date, bgcover, description })
         }
       }
 
