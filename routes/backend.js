@@ -32,10 +32,16 @@ router.post('/results', (req, res, next) => {
       for (let i in games.data.results) {
         let name = games.data.results[i].name
         let gbid = games.data.results[i].id
-        let date = moment(`${games.data.results[i].original_release_date} GMT`)
+        let date = moment(`
+            ${games.data.results[i].expected_release_year}-
+            ${games.data.results[i].expected_release_month}-
+            ${games.data.results[i].expected_release_day}
+            `)
         let bgcover = games.data.results[i].image.medium_url
         let description = games.data.results[i].deck
-        results.push({ name, gbid, date, bgcover, description })
+        if (moment(date).isValid()) {
+            results.push({ name, gbid, date, bgcover, description })
+        }
       }
 
       results.sort((a, b) => {
