@@ -5,12 +5,33 @@ chai.use(chaiHttp)
 
 const server = require('../app')
 
-describe('index', () => {
+describe('index', function() {
+    const Knex = require('knex')
+    const knexConfig = require('../knexfile')
+    const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
+    
+    beforeEach(function() {
+        return knex.migrate.rollback()
+        .then(function() {
+            return knex.migrate.latest()
+        })
+        .then(function() {
+            return knex.seed.run()
+        })
+    })
+
+    afterEach(function(done) {
+        knex.migrate.rollback()
+        .then(function() {
+            done()
+        })
+    })
+
     describe('GET /', () => {
         it('should GET all games in the database', (done) => {
             chai.request(server)
             .get('/')
-            .end((err, res) => {
+            .end(function (err, res) {
                 should.not.exist(err)
                 res.status.should.equal(200)
                 done()
@@ -20,7 +41,7 @@ describe('index', () => {
         it('should 404 on any other page', (done) => {
             chai.request(server)
             .get('/notreal')
-            .end((err, res) => {
+            .end(function (err, res) {
                 res.status.should.equal(404)
                 done()
             })
