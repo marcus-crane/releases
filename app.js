@@ -46,3 +46,5 @@ app.listen(8080, () => {
         `NODE_ENV set to ${process.env.NODE_ENV} mode\n`
     )
 })
+
+module.exports = app

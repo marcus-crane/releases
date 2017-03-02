@@ -8,7 +8,7 @@
     "start-prod": "NODE_ENV=production node app.js",
     "reset-db": "knex migrate:latest && knex seed:run",
     "lint": "standard",
-    "test": "npm run lint"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,9 @@
     "pug": "^2.0.0-beta11"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0",
     "standard": "^8.6.0"
   }
 }
