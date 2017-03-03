@@ -28,7 +28,7 @@ describe('index', function() {
     })
 
     describe('GET /', () => {
-        it('should GET all games in the database', (done) => {
+        it('should GET all games in the database', function(done) {
             chai.request(server)
             .get('/')
             .end(function (err, res) {
@@ -38,7 +38,7 @@ describe('index', function() {
             })
         })
 
-        it('should 404 on any other page', (done) => {
+        it('should FAIL on any other page', function(done) {
             chai.request(server)
             .get('/notreal')
             .end(function (err, res) {
