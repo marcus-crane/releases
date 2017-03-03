@@ -3,4 +3,8 @@ node_js:
   -  "6"
   -  "7"
 addons:
-  - rethinkdb: '2.3.5'
+  - rethinkdb: "2.3.5"
+install:
+  - npm install rethinkdb-migrate -g
+before_script: 
+  - npm run migrate
