@@ -1,5 +1,5 @@
 const chai = require('chai')
-const should = chai.should()
+const expect = chai.expect
 const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 
@@ -32,8 +32,8 @@ describe('index', function() {
             chai.request(server)
             .get('/')
             .end(function (err, res) {
-                should.not.exist(err)
-                res.status.should.equal(200)
+                expect(err).to.not.exist
+                expect(res).to.have.status(200)
                 done()
             })
         })
@@ -42,7 +42,7 @@ describe('index', function() {
             chai.request(server)
             .get('/notreal')
             .end(function (err, res) {
-                res.status.should.equal(404)
+                expect(res).to.have.status(404)
                 done()
             })
         })

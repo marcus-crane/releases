@@ -1,5 +1,5 @@
 const chai = require('chai')
-const should = chai.should()
+const expect = chai.expect
 const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 
@@ -32,10 +32,10 @@ describe('api', function() {
             chai.request(server)
             .get('/api/month')
             .end(function(err, res) {
-                should.not.exist(err)
-                res.status.should.equal(200)
-                res.should.be.json
-                res.body.should.be.a('array')
+                expect(err).to.be.null
+                expect(res).to.have.status(200)
+                expect(res).to.be.json
+                expect(res.body).to.be.an('array')
                 done()
             })
         })
@@ -44,10 +44,10 @@ describe('api', function() {
             chai.request(server)
             .get('/api/month/1')
             .end(function(err, res) {
-                should.not.exist(err)
-                res.status.should.equal(200)
-                res.should.be.json
-                res.body.should.be.a('array')
+                expect(err).to.be.null
+                expect(res).to.have.status(200)
+                expect(res).to.be.json
+                expect(res.body).to.be.an('array')
                 done()
             })
         })
@@ -56,8 +56,8 @@ describe('api', function() {
             chai.request(server)
             .get('/api/month/1234')
             .end(function (err, res) {
-                should.exist(err)
-                res.status.should.equal(404)
+                expect(err).to.exist
+                expect(res).to.have.status(404)
                 done()
             })
         })
