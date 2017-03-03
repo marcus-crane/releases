@@ -9,8 +9,8 @@ const router = express.Router() // eslint-disable-line
 const jsonParser = bodyParser.json() // eslint-disable-line
 
 const routes = require('./routes/index')
-const api = require('./routes/api')
-const backend = require('./routes/backend')
+// const api = require('./routes/api')
+// const backend = require('./routes/backend')
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
@@ -20,8 +20,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/', routes)
-app.use('/api', api)
-app.use('/backend', backend)
+// app.use('/api', api)
+// app.use('/backend', backend)
 
 app.use((req, res, next) => {
   let err = new Error('Not Found')

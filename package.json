@@ -27,10 +27,10 @@
     "express": "^4.14.0",
     "gm": "^1.23.0",
     "google-images": "^2.0.1",
-    "knex": "^0.12.7",
     "moment": "^2.17.1",
-    "pg": "^6.1.2",
-    "pug": "^2.0.0-beta11"
+    "pug": "^2.0.0-beta11",
+    "rethinkdb": "^2.3.3",
+    "rethinkdbdash": "^2.3.28"
   },
   "devDependencies": {
     "chai": "^3.5.0",
