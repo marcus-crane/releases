@@ -6,7 +6,9 @@
   "scripts": {
     "start": "NODE_ENV=development node app.js",
     "start-prod": "NODE_ENV=production node app.js",
-    "reset-db": "knex migrate:latest && knex seed:run",
+    "migrate": "rethinkdb-migrate up --db=vgdates",
+    "empty": "rethinkdb-migrate down --db=vgdates",
+    "reset-db": "npm run empty && npm run migrate",
     "lint": "standard",
     "test": "mocha -R landing"
   },
