@@ -31,7 +31,6 @@
     "google-images": "^2.0.1",
     "moment": "^2.17.1",
     "pug": "^2.0.0-beta11",
-    "rethinkdb": "^2.3.3",
     "rethinkdbdash": "^2.3.28"
   },
   "devDependencies": {
