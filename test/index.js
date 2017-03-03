@@ -1,0 +1,50 @@
+const chai = require('chai')
+const expect = chai.expect
+const chaiHttp = require('chai-http')
+chai.use(chaiHttp)
+
+const server = require('../app')
+
+describe('index', function() {
+    const Knex = require('knex')
+    const knexConfig = require('../knexfile')
+    const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
+    
+    beforeEach(function() {
+        return knex.migrate.rollback()
+        .then(function() {
+            return knex.migrate.latest()
+        })
+        .then(function() {
+            return knex.seed.run()
+        })
+    })
+
+    afterEach(function(done) {
+        knex.migrate.rollback()
+        .then(function() {
+            done()
+        })
+    })
+
+    describe('GET /', () => {
+        it('should GET all games in the database', function(done) {
+            chai.request(server)
+            .get('/')
+            .end(function (err, res) {
+                expect(err).to.not.exist
+                expect(res).to.have.status(200)
+                done()
+            })
+        })
+
+        it('should FAIL on any other page', function(done) {
+            chai.request(server)
+            .get('/notreal')
+            .end(function (err, res) {
+                expect(res).to.have.status(404)
+                done()
+            })
+        })
+    })
+})

@@ -19,7 +19,7 @@ router.get('/month', (req, res, next) => {
 
       for (let i in games) {
         let name = games[i].title
-        let date = moment(`${games[i].releaseDate} GMT`)
+        let date = moment(`${games[i].releaseDate}`)
         let developer = games[i].developer
         let publisher = games[i].publisher
         let description = games[i].description
@@ -36,11 +36,12 @@ router.get('/month', (req, res, next) => {
         releases[i].date = moment(releases[i].date).format('dddd, MMMM Do')
       }
 
-      res.json({ releases })
+      res.json(releases)
     })
     .catch((err) => {
       console.error('Broke at /month', err)
-      res.send('Something broke! Let me know via <a href="mailtO:marcus@thingsima.de">Email</a>!')
+      res.sendStatus(404)
+      // res.send('Something broke! Let me know via <a href="mailto:marcus@thingsima.de">Email</a>!')
     })
 })
 
@@ -56,7 +57,7 @@ router.get('/month/:month', (req, res, next) => {
 
         for (let i in games) {
           let name = games[i].title
-          let date = moment(`${games[i].releaseDate} GMT`)
+          let date = moment(`${games[i].releaseDate}`)
           let developer = games[i].developer
           let publisher = games[i].publisher
           let description = games[i].description
@@ -73,13 +74,13 @@ router.get('/month/:month', (req, res, next) => {
           releases[i].date = moment(releases[i].date).format('dddd, MMMM Do')
         }
 
-        res.json({ releases })
+        res.json(releases)
       })
       .catch((err) => {
         console.error(`Broke at /month/${req.params.month}`, err)
       })
   } else {
-    res.send('That isn\'t a valid month')
+    res.sendStatus(404)
   }
 })
 
@@ -90,7 +91,7 @@ router.get('/month/all', (req, res, next) => {
 
       for (let i in games) {
         let name = games[i].title
-        let date = moment(`${games[i].releaseDate} GMT`)
+        let date = moment(`${games[i].releaseDate}`)
         let developer = games[i].developer
         let publisher = games[i].publisher
         let description = games[i].description
@@ -107,11 +108,12 @@ router.get('/month/all', (req, res, next) => {
         releases[i].date = moment(releases[i].date).format('dddd, MMMM Do')
       }
 
-      res.json({ releases })
+      res.json(releases)
     })
     .catch((err) => {
       console.error('Broke at /month/all', err)
-      res.send('Something broke! Let me know via <a href="mailtO:marcus@thingsima.de">Email</a>!')
+      res.sendStatus(404)
+      // res.send('Something broke! Let me know via <a href="mailtO:marcus@thingsima.de">Email</a>!')
     })
 })
 
