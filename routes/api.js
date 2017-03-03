@@ -19,7 +19,7 @@ router.get('/month', (req, res, next) => {
 
       for (let i in games) {
         let name = games[i].title
-        let date = moment(`${games[i].releaseDate} GMT`)
+        let date = moment(`${games[i].releaseDate}`)
         let developer = games[i].developer
         let publisher = games[i].publisher
         let description = games[i].description
@@ -57,7 +57,7 @@ router.get('/month/:month', (req, res, next) => {
 
         for (let i in games) {
           let name = games[i].title
-          let date = moment(`${games[i].releaseDate} GMT`)
+          let date = moment(`${games[i].releaseDate}`)
           let developer = games[i].developer
           let publisher = games[i].publisher
           let description = games[i].description
@@ -91,7 +91,7 @@ router.get('/month/all', (req, res, next) => {
 
       for (let i in games) {
         let name = games[i].title
-        let date = moment(`${games[i].releaseDate} GMT`)
+        let date = moment(`${games[i].releaseDate}`)
         let developer = games[i].developer
         let publisher = games[i].publisher
         let description = games[i].description
