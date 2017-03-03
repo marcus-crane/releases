@@ -1,20 +1,15 @@
 const express = require('express')
 const router = express.Router()
-
-const gb = require('../lib/api/giantbomb')
-
+const r = require('rethinkdbdash')({ db: 'vgdates' })
 const moment = require('moment')
-
-const Knex = require('knex')
-const knexConfig = require('../knexfile')
-const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
+const gb = require('../lib/api/giantbomb')
 
 router.get('/', (req, res, next) => {
   res.render('import', { 'header': 'Search for a title', 'tagline': 'What games are we missing from the database?' })
 })
 
 router.post('/', (req, res, next) => {
-  knex('games').insert({ gb_id: req.body.gb_id, title: req.body.title, releaseDate: req.body.date, bgcover: req.body.bgcover, description: req.body.description, developer: req.body.developer, publisher: req.body.publisher })
+  r('games').insert({ gb_id: req.body.gb_id, title: req.body.title, releaseDate: req.body.date, bgcover: req.body.bgcover, description: req.body.description, developer: req.body.developer, publisher: req.body.publisher })
     .then((done) => {
       console.log(`Added ${req.body.title} to the database.`)
       res.redirect('/')
