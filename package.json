@@ -8,7 +8,7 @@
     "start-prod": "NODE_ENV=production node app.js",
     "reset-db": "knex migrate:latest && knex seed:run",
     "lint": "standard",
-    "test": "mocha"
+    "test": "mocha -R landing"
   },
   "repository": {
     "type": "git",
