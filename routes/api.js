@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const r = require('rethinkdbdash')({ db: 'vgdates' })
 const moment = require('moment')
+const r = require('../lib/rethink/utils')
 
 router.get('/', (req, res, next) => {
   res.send('At the moment, the only endpoint is /month/. You can either just visit <a href="/api/month">/month/</a> to see the entire database or visit <a href="/api/month/3">/month/{monthnumber}</a> where monthnumber is between 1 (Jan) and 12 (Dec). Yeah, it\'s not zero indexed ;)')
 })
 
 router.get('/month', (req, res, next) => {
-  r.table('games')
+  r.get('games')
     .then((games) => {
       let releases = []
 
@@ -46,7 +46,7 @@ router.get('/month/:month', (req, res, next) => {
   if (month > 0 && month < 13) {
     if (month < 10) { month = `0${month}` }
     console.log(month)
-    r.table('games').filter(r.row('releaseDate').match(`.*-${month}-.*`))
+      r.getMonth('games', month)
       .then((games) => {
         console.log(games)
         let releases = []

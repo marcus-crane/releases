@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const r = require('rethinkdbdash')({ db: 'vgdates' })
 const moment = require('moment')
+const r = require('../lib/rethink/utils')
 
 router.get('/', (req, res, next) => {
-  r.table('games')
+  r.get('games')
     .then((games) => {
       let releases = []
       for (let i in games) {
