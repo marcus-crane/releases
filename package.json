@@ -9,8 +9,7 @@
     "migrate": "rethinkdb-migrate up --db=vgdates",
     "empty": "rethinkdb-migrate down --db=vgdates",
     "reset-db": "npm run empty && npm run migrate",
-    "lint": "standard",
-    "test": "mocha -R landing"
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
