@@ -1,7 +1,7 @@
 {
-  "name": "vgdates",
+  "name": "vgdates-backend",
   "version": "1.0.0",
-  "description": "A release tracker for upcoming videogames",
+  "description": "The API server for VGDates",
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=development node app.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcus-crane/vgdates.git"
+    "url": "git+https://github.com/vgdates/backend.git"
   },
   "author": "Marcus <marcus@thingsima.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcus-crane/vgdates/issues"
+    "url": "https://github.com/vgdates/backend/issues"
   },
-  "homepage": "https://github.com/marcus-crane/vgdates#readme",
+  "homepage": "https://github.com/vgdates/backend#readme",
   "dependencies": {
     "axios": "^0.15.3",
     "body-parser": "^1.16.1",
