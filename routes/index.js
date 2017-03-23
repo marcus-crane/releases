@@ -46,7 +46,7 @@ router.get('/month/:month', (req, res, next) => {
   if (month > 0 && month < 13) {
     if (month < 10) { month = `0${month}` }
     console.log(month)
-      r.getMonth('games', month)
+    r.getMonth('games', month)
       .then((games) => {
         console.log(games)
         let releases = []

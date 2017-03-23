@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path')
 
 const env = require('dotenv').config() // eslint-disable-line
 
@@ -33,7 +32,7 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
   console.log(
-    `Online and logged on at Port ${port}\n`, 
+    `Online and logged on at Port ${port}\n`,
     `NODE_ENV set to ${process.env.NODE_ENV} mode\n`
   )
 })

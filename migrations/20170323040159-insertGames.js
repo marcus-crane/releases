@@ -1,8 +1,8 @@
 'use strict'
 
 exports.up = function (r, connection) {
-    return Promise.all([
-        r.table('games').insert([
+  return Promise.all([
+    r.table('games').insert([
             { title: 'Gravity Rush 2', releaseDate: '2017-01-18' },
             { title: 'Dragon Quest VIII: Journey of the Cursed King', releaseDate: '2017-01-21' },
             { title: 'Kingdom Hearts HD 2.8 Final Chapter Prologue', releaseDate: '2017-01-24' },
@@ -31,12 +31,12 @@ exports.up = function (r, connection) {
             { title: 'Yooka-Laylee', releaseDate: '2017-04-11' },
             { title: 'The Silver Case', releaseDate: '2017-04-21' },
             { title: 'Dragon Quest Heroes II', releaseDate: '2017-04-28' }
-        ]).run(connection)
-    ])
+    ]).run(connection)
+  ])
 }
 
 exports.down = function (r, connection) {
-    return Promise.all([
-        r.table('games').delete().run(connection)
-    ])
+  return Promise.all([
+    r.table('games').delete().run(connection)
+  ])
 }
