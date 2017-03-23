@@ -1,7 +1,7 @@
 {
-  "name": "vgdates",
+  "name": "vgdates-backend",
   "version": "1.0.0",
-  "description": "A release tracker for upcoming videogames",
+  "description": "The API server for VGDates",
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=development node app.js",
@@ -9,19 +9,18 @@
     "migrate": "rethinkdb-migrate up --db=vgdates",
     "empty": "rethinkdb-migrate down --db=vgdates",
     "reset-db": "npm run empty && npm run migrate",
-    "lint": "standard",
-    "test": "mocha -R landing"
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcus-crane/vgdates.git"
+    "url": "git+https://github.com/vgdates/backend.git"
   },
   "author": "Marcus <marcus@thingsima.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcus-crane/vgdates/issues"
+    "url": "https://github.com/vgdates/backend/issues"
   },
-  "homepage": "https://github.com/marcus-crane/vgdates#readme",
+  "homepage": "https://github.com/vgdates/backend#readme",
   "dependencies": {
     "axios": "^0.15.3",
     "body-parser": "^1.16.1",
@@ -30,13 +29,9 @@
     "gm": "^1.23.0",
     "google-images": "^2.0.1",
     "moment": "^2.17.1",
-    "pug": "^2.0.0-beta11",
     "rethinkdbdash": "^2.3.28"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
-    "mocha": "^3.2.0",
     "standard": "^8.6.0"
   }
 }

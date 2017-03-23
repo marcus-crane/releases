@@ -1,4 +1,4 @@
-# VGDates (http://vgdat.es)
+# VGDates - Backend Server
 
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcus-crane/releases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcus-crane/releases/?branch=master)
@@ -33,7 +33,7 @@ I had felt like this for a long time but finally got around to forming my own an
 
 It was just meant to be a simple side project but I started to use it personally so I've been adding more and more to it in between searching for my first proper development job.
 
-It's also a good testing ground for trying out new things I wouldn't otherwise have any reason to eg; any of the [V3 milestones](https://github.com/marcus-crane/releases/milestone/3).
+It's also a good testing ground for trying out new things I wouldn't otherwise have any reason to eg; any of the [V3 milestones](https://github.com/vgdates/backend/milestone/3).
 
 ## What do I need to run it?
 
@@ -45,7 +45,7 @@ Eventually, I plan to add the ability to choose the background on-site when addi
 
 ## What features are you planning on adding?
 
-You can see what I'm considering adding under the [Issues](https://github.com/marcus-crane/releases/issues) and what I'm working on adding/about to work on under the [Projects](https://github.com/marcus-crane/vgdates/projects/2) tab.
+You can see what I'm considering adding under the [Issues](https://github.com/vgdates/backend/issues) and what I'm working on adding/about to work on under the [Projects](https://github.com/vgdates/backend/projects/2) tab.
 
 ## I want to contribute! What do I need to know?
 
@@ -69,6 +69,8 @@ With the Docker image pulled, you'll want to run it, binding `32768` in this cas
 This means any requests we make to the database will need to hit Port `32768`, which you can see reflected in the development settings for knexfile.js.
 
 You can probably bind `5432` to `5432` but if you actually have a real install as well, you'll likely overwrite requests to it or cause a clash.
+
+### Warning: Out of date. Uses Rethinkdb now and this needs updating
 
 ```
 docker run -d -p 5423:32768 postgres
