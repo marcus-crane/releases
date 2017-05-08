@@ -14,26 +14,28 @@ app.disable('x-powered-by')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+// Routing
+app.use('/', index)
+
 // Serve static files
-app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.resolve(__dirname, '/public')))
 
 // Error handlers
-
 app.use((err, req, res, next) => {
-    res.status(err.status || 500)
-    res.send(err.message)
+  res.status(err.status || 500)
+  res.send(err.message)
 })
 
 let server = require('http').createServer(app)
 
 exports.listen = function (port, startupMessage) {
-    server.listen(port)
-    if (startupMessage) {
-        console.log(`VGDates is now available at http://localhost:${port}`)
-        console.log(`Running in ${app.get('env').toUpperCase()} mode`)
-    }
+  server.listen(port)
+  if (startupMessage) {
+    console.log(`VGDates is now available at http://localhost:${port}`)
+    console.log(`Running in ${app.get('env').toUpperCase()} mode`)
+  }
 }
 
 exports.close = function() {
-    server.close()
+  server.close()
 }
