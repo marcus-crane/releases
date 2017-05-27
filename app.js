@@ -1,6 +1,9 @@
 const express = require('express')
-// const mongoose = require('mongoose')
+const session = require('express-session')
+const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')(session)
 const path = require('path')
+const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const promisify = require('es6-promisify')
 const flash = require('connect-flash')
@@ -20,6 +23,16 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(expressValidator())
+
+app.use(cookieParser())
+
+app.use(session({
+  secret: process.env.SECRET,
+  key: process.env.KEY,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
 
 app.use(flash())
 

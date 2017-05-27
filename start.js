@@ -1,12 +1,12 @@
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 require('dotenv').config({ path: 'keys.env' })
 
-// mongoose.connect(process.env.DATABASE)
-// mongoose.Promise = global.Promise
-// mongoose.connection.on('error', err => {
-//   console.error('Uh oh', err.message)
-// })
+mongoose.connect(process.env.DATABASE)
+mongoose.Promise = global.Promise
+mongoose.connection.on('error', err => {
+  console.error('Uh oh', err.message)
+})
 
 // require('./models/Game')
 
