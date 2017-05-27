@@ -6,13 +6,14 @@ const gameSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: 'Please specify a game title'
+    required: 'Please specify a title'
   },
   slug: String,
-  releases: [{
-    platform: String,
-    date: Date
-  }],
+  release: {
+    type: Date,
+    required: 'Please specify a release date'
+  },
+  platforms: [String],
   created: {
     type: Date,
     default: Date.now

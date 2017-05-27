@@ -1,4 +1,8 @@
 extends layout
 
+include mixins/_gameSnippet
+
 block content
-  p hi
+  h2= title
+  each game in games
+    +gameSnippet(game)

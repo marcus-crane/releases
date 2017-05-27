@@ -1,0 +1,12 @@
+mixin gameForm(game = {})
+  form(action=`/add/${game._id || ''}` method="POST")
+    label(for="name") Name
+    input(type="text" name="name" value=game.name)
+    label(for="release") Release Date
+    input(type="date" name="release" value=game.release)
+    - const choices = ['3DS', 'PC', 'PS3', 'PS4', 'PS Vita', 'Switch', 'Wii U', 'Xbox 360', 'Xbox One']
+    - const platforms = game.platforms || []
+    each choice in choices
+      input(type="checkbox" id=choice value=choice name="platforms" checked=(platforms.includes(choice)))
+      label(for="choice") #{choice}
+    input(type="submit" value="Save title" class="button")

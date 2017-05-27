@@ -20,7 +20,6 @@ html
               .flash(class=`flash--${category}`)
                 p.flash__text!= message
                 button.flash__remove(onClick="this.parentElement.remove()") &times;
-    .content
-      block content
+    block content
 
-  block scripts
+    block scripts

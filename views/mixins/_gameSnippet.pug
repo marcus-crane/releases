@@ -1,0 +1,6 @@
+mixin gameSnippet(game = {})
+  h2
+    a(href=`/game/${game.slug}`) #{game.name}
+  for platform in game.platforms
+    p= platform
+  p= h.moment(game.release).format('MMMM Do YYYY')
