@@ -1,0 +1,44 @@
+const express = require('express')
+const mongoose = require('mongoose')
+const path = require('path')
+const bodyParser = require('body-parser')
+const promisify = require('es6-promisify')
+const flash = require('connect-flash')
+const expressValidator = require('express-validator')
+const routes = require('./routes/index')
+const helpers = require('./helpers')
+const errorHandlers = require('./handlers/errorHandlers')
+
+const app = express()
+
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(expressValidator())
+
+app.use(flash())
+
+app.use((req, res, next) => {
+  res.locals.h = helpers
+  res.locals.flashes = req.flash()
+  res.locals.currentPath = req.path
+  next()
+})
+
+app.use('/', routes)
+
+app.use(errorHandlers.notFound)
+app.use(errorHandlers.flashValidationErrors)
+
+if (app.get('env') === 'development') {
+  app.use(errorHandlers.developmentErrors)
+}
+
+app.use(errorHandlers.productionErrors)
+
+module.exports = app
