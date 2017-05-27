@@ -4,3 +4,5 @@ const gameController = require('../controllers/gameController')
 const { catchErrors } = require('../handlers/errorHandlers')
 
 router.get('/', gameController.homePage)
+
+module.exports = router

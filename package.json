@@ -4,7 +4,7 @@
   "description": "The backend API for VGDates",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node start.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "connect-flash": "^0.1.1",
     "dotenv": "^4.0.0",
     "es6-promisify": "^5.0.0",
+    "express": "^4.15.3",
     "express-validator": "^3.2.0",
     "got": "^6.7.1",
     "moment": "^2.18.1",
