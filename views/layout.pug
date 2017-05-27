@@ -6,6 +6,10 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
     block header
+      each item in h.menu
+        li
+          a(href=item.slug)
+            span #{item.title}
 
     block messages
       if locals.flashes
