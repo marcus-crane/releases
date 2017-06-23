@@ -1,6 +1,15 @@
 mixin gameSnippet(game = {})
-  h2
-    a(href=`/game/${game.slug}`) #{game.name}
-  for platform in game.platforms
-    p= platform
-  p= h.moment(game.release).format('MMMM Do YYYY')
+  div(class="card")
+    header(class="card-header")
+      p(class="card-header-title") #{game.name}
+      a(class="card-header-icon")
+        span(class="icon")
+          i(class="fa fa-angle-down")
+    div(class="card-content")
+      div(class="content")
+        p= h.moment(game.release).format('MMMM Do YYYY')
+        for platform in game.platforms
+          span(class="tag is-dark") #{platform}
+    footer(class="card-footer")
+      a(class="card-footer-item") Edit
+      a(class="card-footer-item") Delete

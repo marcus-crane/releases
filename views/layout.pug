@@ -3,13 +3,16 @@ html
   head
     title= `${title} | ${h.siteName}`
     link(rel="stylesheet", href="/dist/style.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
-    block header
-      each item in h.menu
-        li
-          a(href=item.slug)
-            span #{item.title}
+    nav(class="nav has-shadow")
+      div(class="container")
+        div(class="nav-left")
+          a(class="nav-item")
+            img(src="http://bulma.io/images/bulma-logo.png", alt="Bulma logo")
+          each item in h.menu
+            a(class="nav-item is-tab is-hidden-mobile", href=item.slug) #{item.title}
 
     block messages
       if locals.flashes
@@ -17,9 +20,10 @@ html
           - const categories = Object.keys(locals.flashes)
           each category in categories
             each message in flashes[category]
-              .flash(class=`flash--${category}`)
-                p.flash__text!= message
-                button.flash__remove(onClick="this.parentElement.remove()") &times;
+              article(class="message")
+                div(class="message-header")
+                  p #{message}
+                  button.delete(onClick="this.parentElement.remove()") &times;
     block content
 
     block scripts

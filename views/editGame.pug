@@ -3,5 +3,12 @@ extends layout
 include mixins/_gameForm
 
 block content
-  h2= title
-  +gameForm(game)
+  section(class="hero is-info")
+    div(class="hero-body")
+      div(class="container")
+        h1(class="title") #{title}
+        h2(class="subtitle") Keep the database up to date
+  section(class="section")
+    div(class="columns")
+      div(class="column is-half")
+        +gameForm(game)
