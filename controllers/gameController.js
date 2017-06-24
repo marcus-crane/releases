@@ -8,11 +8,7 @@ exports.getGames = async (req, res) => {
 
 exports.renderAPI = async (req, res) => {
   const games = await Game.find()
-  for (game of games) {
-    delete game.slug
-    console.log(game)
-  }
-  console.log(games)
+  games.sort((a, b) => a.release - b.release)
   res.json(games)
 }
 

@@ -1,15 +1,7 @@
 mixin gameSnippet(game = {})
-  div(class="card")
-    header(class="card-header")
-      p(class="card-header-title") #{game.name}
-      a(class="card-header-icon")
-        span(class="icon")
-          i(class="fa fa-angle-down")
-    div(class="card-content")
-      div(class="content")
-        p= h.moment(game.release).format('MMMM Do YYYY')
-        for platform in game.platforms
-          span(class="tag is-dark") #{platform}
-    footer(class="card-footer")
-      a(class="card-footer-item") Edit
-      a(class="card-footer-item") Delete
+  div(class="notification is-dark")
+    h5(class="title is-5") #{game.name}
+    h5(class="subtitle is-6") #{h.moment(game.release).format('MMMM Do YYYY')}
+    div(class="platforms has-text-centered")
+    for platform in game.platforms
+      span(class="tag") #{platform}
