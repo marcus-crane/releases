@@ -3,13 +3,22 @@ const Game = mongoose.model('Game')
 
 exports.getGames = async (req, res) => {
   const games = await Game.find()
+  games.sort((a, b) => a.release - b.release)
   res.render('index', { title: 'Upcoming Games', games })
 }
 
 exports.renderAPI = async (req, res) => {
-  const games = await Game.find()
+  let games = await Game.find()
+  let render = []
   games.sort((a, b) => a.release - b.release)
-  res.json(games)
+  games.map(game => {
+    let cleanedGame = {}
+    cleanedGame.name = game.name
+    cleanedGame.release = game.release
+    cleanedGame.platforms = game.platforms
+    render.push(cleanedGame)
+  })
+  res.json(render)
 }
 
 exports.addGame = (req, res) => {
