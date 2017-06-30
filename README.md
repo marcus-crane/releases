@@ -1,18 +1,14 @@
-# VGDates - Backend Server
-
-[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/marcus-crane/releases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/marcus-crane/releases/?branch=master)
+# VGDates ~ Backend Server
 
 ## Table of Contents
 
-1. [What's this?](#what's-this)
+1. [What is this?](#what-is-this)
 1. [What do I need to run it?](#what-do-i-need-to-run-it)
 1. [What features are you planning on adding?](#what-features-are-you-planning-on-adding)
-1. [I want to contribute! What do I need to know?](#i-want-to-contribute-what-do-i-need-to-know)
-1. [Can I use Docker?](#can-i-use-docker)
+1. [Can I contribute?](#can-i-contribute)
 
 
-## What's this?
+## What is this?
 
 You can read about what this project is meant to be [here](https://github.com/vgdates/planning) in the planning repo. There's still quite a bit of documentation missing seeing as it's all in my head!
 
@@ -41,7 +37,7 @@ You can take a look back through closed issues to see what the previous version 
 
 I'm rewriting everything from scratch since I've learnt quite a bit since the first version.
 
-## I want to contribute!
+## Can I contribute?
 
 At the moment, the project isn't really set up for others to contribute. Most of the information around it hasn't been written down and I barely have a working prototype.
 
