@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel="stylesheet", href="/dist/style.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    nav(class="nav has-shadow")
+      div(class="container")
+        div(class="nav-left")
+          a(class="nav-item")
+            img(src="/img/logo.png", alt="VGDates Placeholder Logo")
+          each item in h.menu
+            a(class="nav-item is-tab is-hidden-mobile", href=item.slug) #{item.title}
+
+    block messages
+      if locals.flashes
+        .flash-messages
+          - const categories = Object.keys(locals.flashes)
+          each category in categories
+            each message in flashes[category]
+              article(class="message")
+                div(class="message-header")
+                  p #{message}
+                  button.delete(onClick="this.parentElement.remove()") &times;
+    block content
+
+    block scripts

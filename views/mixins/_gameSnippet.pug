@@ -1,0 +1,7 @@
+mixin gameSnippet(game = {})
+  div(class="notification is-dark")
+    h5(class="title is-5") #{game.name}
+    h5(class="subtitle is-6") #{h.moment(game.release).format('MMMM Do YYYY')}
+    div(class="platforms")
+    for platform in game.platforms
+      span(class="tag") #{platform}

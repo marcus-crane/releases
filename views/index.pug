@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_gameSnippet
+
+block content
+  section(class="hero is-info")
+    div(class="hero-body")
+      div(class="container")
+        h1(class="title") #{title}
+        h2(class="subtitle") What's up next?
+  
+  section(class="section")
+    div(class="container")
+      each game in games
+        div(class="column is-narrow is-mobile")
+          +gameSnippet(game)
