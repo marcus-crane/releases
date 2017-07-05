@@ -8,5 +8,5 @@ mixin gameSnippet(game = {})
     div(class="platforms")
     for platform in game.platforms
       span(class="tag")
-        - let link = platform.toLowerCase()
+        - let link = `/platform/${h.slug(platform)}`
         a(href=link) #{platform}

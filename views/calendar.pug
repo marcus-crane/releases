@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  section(class="section")
+    div(class="container")
+      div(class="columns")
+        a(href="/month/january" class="column")
+          p(class="notification is-dark") January
+        a(href="/month/february" class="column")
+          p(class="notification is-dark") February
+        a(href="/month/march" class="column")
+          p(class="notification is-dark") March
+      div(class="columns")
+        a(href="/month/april" class="column")
+          p(class="notification is-dark") April
+        a(href="/month/may" class="column")
+          p(class="notification is-dark") May
+        a(href="/month/june" class="column")
+          p(class="notification is-dark") June
+      div(class="columns")
+        a(href="/month/july" class="column")
+          p(class="notification is-dark") July
+        a(href="/month/august" class="column")
+          p(class="notification is-dark") August
+        a(href="/month/september" class="column")
+          p(class="notification is-dark") September
+      div(class="columns")
+        a(href="/month/october" class="column")
+          p(class="notification is-dark") October
+        a(href="/month/november" class="column")
+          p(class="notification is-dark") November
+        a(href="/month/december" class="column")
+          p(class="notification is-dark") December
+
+      //- - const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      //- each month, index in months
+      //-   if (index === 0 || index % 4 === 0) 
+      //-     div(class="tile is-ancestor")
+      //-       div(class="tile is-parent")
+      //-         article(class="tile is-child box")
+      //-           p(class="title")
+      //-             a(href=month.toLowerCase()) #{month}
+      //-   else
+      //-     div(class="tile is-parent")
+      //-         article(class="tile is-child box")
+      //-           p(class="title")
+      //-             a(href=month.toLowerCase()) #{month}

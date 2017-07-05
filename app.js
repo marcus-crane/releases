@@ -42,6 +42,8 @@ app.use(session({
 
 app.use(flash())
 
+app.locals.pretty = true
+
 app.use((req, res, next) => {
   res.locals.h = helpers
   res.locals.flashes = req.flash()
