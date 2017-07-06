@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const moment = require('moment')
+const h = require('../helpers')
 const Game = mongoose.model('Game')
 
 exports.getGames = async (req, res) => {
@@ -12,6 +13,14 @@ exports.getGames = async (req, res) => {
 exports.queryGame = async(req, res) => {
   let game = await Game.findOne({ slug: req.params.game })
   res.render('editGame', { title: `Edit ${game.name}`, game })
+}
+
+exports.queryPlatform = async(req, res) => {
+  const platform = h.unslug[req.params.platform]
+  let games = await Game.find({ platforms: { $in: [platform] }})
+  games = games.filter(game => moment(game.release).isAfter())
+  games.sort((a, b) => a.release - b.release)
+  res.render('index', { title: `Upcoming ${platform} releases`, games })
 }
 
 exports.addGame = (req, res) => {
