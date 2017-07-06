@@ -5,6 +5,8 @@ mixin gameSnippet(game = {})
     h5(class="subtitle is-6")
       - let month = h.moment(game.release)
       a(href=`/month/${h.slug(month.format('MMMM'))}`)= month.format('MMMM Do YYYY')
+      |   //   
+      a(href=`/edit/${game.slug}`) Edit
     .platforms
     for platform in game.platforms
       span.tag

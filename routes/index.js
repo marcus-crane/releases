@@ -9,6 +9,7 @@ router.get('/', catchErrors(gameController.getGames))
 router.get('/add', gameController.addGame)
 router.post('/add', catchErrors(gameController.createGame))
 
+router.get('/edit/:game', catchErrors(gameController.editGame))
 router.get('/game/:game', catchErrors(gameController.queryGame))
 router.get('/platform/:platform', catchErrors(gameController.queryPlatform))
 router.get('/month/:month', catchErrors(gameController.sortByMonth))
