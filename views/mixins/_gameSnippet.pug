@@ -7,5 +7,5 @@ mixin gameSnippet(game = {})
       a(href=`/month/${h.slug(month.format('MMMM'))}`)= month.format('MMMM Do YYYY')
     .platforms
     for platform in game.platforms
-      span(class="tag")
+      span.tag
         a(href=`/platform/${h.slug(platform)}`)= platform

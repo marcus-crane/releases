@@ -8,12 +8,12 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
     nav(class="nav has-shadow")
-      div(class="container")
-        div(class="nav-left")
-          a(class="nav-item")
+      .container
+        .nav-left
+          a.nav-item
             img(src="/img/logo.png", alt="VGDates Placeholder Logo")
           each item in h.menu
-            a(class="nav-item is-tab is-hidden-mobile", href=item.slug) #{item.title}
+            a(class="nav-item is-tab is-hidden-mobile", href=item.slug)= item.title
 
     block messages
       if locals.flashes
@@ -21,9 +21,9 @@ html
           - const categories = Object.keys(locals.flashes)
           each category in categories
             each message in flashes[category]
-              article(class="message")
-                div(class="message-header")
-                  p #{message}
+              article.message
+                .message-header
+                  p= message
                   button.delete(onClick="this.parentElement.remove()") &times;
     block content
 

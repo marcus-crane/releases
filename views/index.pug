@@ -4,18 +4,18 @@ include mixins/_gameSnippet
 
 block content
   section(class="hero is-info")
-    div(class="hero-body")
-      div(class="container")
-        h1(class="title") #{title}
-        h2(class="subtitle") What's up next?
+    .hero-body
+      .container
+        h1.title= title
+        h2.subtitle= "What's up next?"
   
-  section(class="section")
-    div(class="container")
+  section.section
+    .container
       <div class="columns">
       each game, index in games
         if (index > 1 && index % 2 === 0)
           </div>
           <div class="columns">
-        div(class="column")
+        .column
           +gameSnippet(game)
       </div>

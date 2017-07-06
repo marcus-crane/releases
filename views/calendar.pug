@@ -9,6 +9,6 @@ block content
         if (index > 1 && index % 4 === 0)
           </div>
           <div class="columns">
-        a(href=`/month/${month.toLowerCase()}` class="column")
-          p(class="notification is-dark")=month
+        a.column(href=`/month/${month.toLowerCase()}`)
+          p(class="notification is-dark")= month
       </div>

@@ -1,21 +1,22 @@
 mixin gameForm(game = {})
   form(action=`/add/${game._id || ''}` method="POST")
-    div(class="field")
-      label(class="label" for="name") Name
-      input(class="input" type="text" name="name" value=game.name placeholder="Game Title")
+    .field
+      label.label(for="name") Name
+      input.input(type="text" name="name" value=game.name placeholder="Game Title")
     
-    div(class="field")
-      label(class="label" for="release") Release Date
-      input(class="input" type="date" name="release" value=h.moment(game.release).format('YYYY-MM-DD'))
+    .field
+      label.label(for="release") Release Date
+      - Object.keys(game).length === 0 ? date = '' : date = h.moment(game.release).format('YYYY-MM-DD')
+      input.input(type="date" name="release" value=date)
 
     - const choices = ['3DS', 'PC', 'PS3', 'PS4', 'PS Vita', 'Switch', 'Wii U', 'Xbox 360', 'Xbox One']
     - const platforms = game.platforms || []
-    div(class="field")
+    .field
     each choice in choices
-      p(class="control")
-        label(class="checkbox", for="choice") #{choice}
+      p.control
+        label.checkbox(for="choice")= choice
           input(type="checkbox" id=choice value=choice name="platforms" checked=(platforms.includes(choice)))
 
-    div(class="field")
-      p(class="control")
+    .field
+      p.control
         button(class="button is-primary" type="submit") Save Title
