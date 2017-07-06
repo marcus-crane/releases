@@ -9,6 +9,11 @@ exports.getGames = async (req, res) => {
   res.render('index', { title: 'Upcoming Games', games })
 }
 
+exports.queryGame = async(req, res) => {
+  let game = await Game.findOne({ slug: req.params.game })
+  res.render('editGame', { title: `Edit ${game.name}`, game })
+}
+
 exports.addGame = (req, res) => {
   res.render('editGame', { title: 'Add Game' })
 }

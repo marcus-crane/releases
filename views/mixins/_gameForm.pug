@@ -6,7 +6,7 @@ mixin gameForm(game = {})
     
     div(class="field")
       label(class="label" for="release") Release Date
-      input(class="input" type="date" name="release" value=game.release)
+      input(class="input" type="date" name="release" value=h.moment(game.release).format('YYYY-MM-DD'))
 
     - const choices = ['3DS', 'PC', 'PS3', 'PS4', 'PS Vita', 'Switch', 'Wii U', 'Xbox 360', 'Xbox One']
     - const platforms = game.platforms || []

@@ -1,12 +1,11 @@
 mixin gameSnippet(game = {})
   div(class="notification is-dark")
     h5(class="title is-5")
-      a(href=game.slug) #{game.name}
+      a(href=`/game/${game.slug}`)= game.name
     h5(class="subtitle is-6")
-      - let month = h.moment(game.release).format('MMMM').toLowerCase()
-      a(href=month) #{h.moment(game.release).format('MMMM Do YYYY')}
-    div(class="platforms")
+      - let month = h.moment(game.release)
+      a(href=`/month/${h.slug(month.format('MMMM'))}`)= month.format('MMMM Do YYYY')
+    .platforms
     for platform in game.platforms
       span(class="tag")
-        - let link = `/platform/${h.slug(platform)}`
-        a(href=link) #{platform}
+        a(href=`/platform/${h.slug(platform)}`)= platform
