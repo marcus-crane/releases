@@ -11,6 +11,11 @@ block content
   
   section(class="section")
     div(class="container")
-      each game in games
-        div(class="column is-narrow is-mobile")
+      <div class="columns">
+      each game, index in games
+        if (index > 1 && index % 2 === 0)
+          </div>
+          <div class="columns">
+        div(class="column")
           +gameSnippet(game)
+      </div>
