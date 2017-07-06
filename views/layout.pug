@@ -2,18 +2,38 @@ doctype html
 html
   head
     title= `${title} | ${h.siteName}`
-    link(rel="stylesheet", href="/dist/style.css")
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
     link(rel="stylesheet", href="/css/style.css")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
-    nav(class="nav has-shadow")
-      .container
-        .nav-left
-          a.nav-item(href="/")
-            img(src="/img/logo.png", alt="VGDates Placeholder Logo")
+    nav.navbar
+      .navbar-brand
+        a.navbar-item(href="/")
+          img(src="/img/logo.png" alt="VGDates Placeholder Logo")
+
+        a(class="navbar-item is-hidden-desktop" href="https://github.com/vgdates" target="_blank" rel="noreferrer")
+          span.icon(style={'color': '#333'})
+            i(class="fa fa-github")
+        
+        a(class="navbar-item is-hidden-desktop" href="https://twitter.com/sentreh" target="_blank" rel="noreferrer")
+          span.icon(style={'color': '#55acee'})
+            i(class="fa fa-twitter")
+
+        div(class="navbar-burger burger" data-target="navigation")
+          span
+          span
+          span
+
+      .navbar-menu#navigation
+        .navbar-start
+          a.navbar-item(href="/") Home
           each item in h.menu
-            a(class="nav-item is-tab is-hidden-mobile", href=item.slug)= item.title
+            a.navbar-item(href=item.slug)= item.title
+
+        .navbar-end
+          a(class="navbar-item" href="https://github.com/vgdates" target="_blank" rel="noreferrer") Github
+          a(class="navbar-item" href="https://twitter.com/sentreh" target="_blank" rel="noreferrer") Twitter
 
     block messages
       if locals.flashes
@@ -28,3 +48,4 @@ html
     block content
 
     block scripts
+      script(src="/js/menu.js")
