@@ -3,7 +3,8 @@ const moment = require('moment')
 const Game = mongoose.model('Game')
 
 exports.getGames = async (req, res) => {
-  const games = await Game.find()
+  let games = await Game.find()
+  games = games.filter(game => moment(game.release).isAfter())
   games.sort((a, b) => a.release - b.release)
   res.render('index', { title: 'Upcoming Games', games })
 }
