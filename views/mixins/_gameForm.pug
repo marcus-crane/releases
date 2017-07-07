@@ -9,6 +9,10 @@ mixin gameForm(game = {})
       - Object.keys(game).length === 0 ? date = '' : date = h.moment(game.release).format('YYYY-MM-DD')
       input.input(type="date" name="release" value=date)
 
+    .field
+      label.label(for="description") Description
+      textarea(name="description" placeholder="This game is...")= game.description
+
     - const choices = ['3DS', 'PC', 'PS3', 'PS4', 'PS Vita', 'Switch', 'Wii U', 'Xbox 360', 'Xbox One']
     - const platforms = game.platforms || []
     .field

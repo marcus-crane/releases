@@ -8,6 +8,7 @@ exports.renderAPI = async (req, res) => {
   games.map(game => {
     render.push({
       name: game.name,
+      description: game.description,
       release: game.release,
       platforms: game.platforms
     })

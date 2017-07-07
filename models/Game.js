@@ -9,6 +9,7 @@ const gameSchema = new mongoose.Schema({
     required: 'Please specify a title'
   },
   slug: String,
+  description: String,
   release: {
     type: Date,
     required: 'Please specify a release date'

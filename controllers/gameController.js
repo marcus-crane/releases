@@ -5,8 +5,10 @@ const Game = mongoose.model('Game')
 
 exports.getGames = async (req, res) => {
   let games = await Game.find()
+
   games = games.filter(game => moment(game.release).isAfter())
   games.sort((a, b) => a.release - b.release)
+
   res.render('index', { title: 'Upcoming Games', games })
 }
 
@@ -17,14 +19,17 @@ exports.editGame = async(req, res) => {
 
 exports.queryGame = async(req, res) => {
   let game = await Game.findOne({ slug: req.params.game })
-  res.render('gameDetail', { title: game.name, game})
+  console.log(game)
+  res.render('gameDetail', { game })
 }
 
 exports.queryPlatform = async(req, res) => {
   const platform = h.unslug[req.params.platform]
   let games = await Game.find({ platforms: { $in: [platform] }})
+
   games = games.filter(game => moment(game.release).isAfter())
   games.sort((a, b) => a.release - b.release)
+
   res.render('index', { title: `Upcoming ${platform} releases`, games })
 }
 
