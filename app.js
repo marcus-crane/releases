@@ -8,6 +8,8 @@ const bodyParser = require('body-parser')
 const promisify = require('es6-promisify')
 const flash = require('connect-flash')
 const expressValidator = require('express-validator')
+const stylus = require('express-stylus')
+const nib = require('nib')
 const routes = require('./routes/index')
 const helpers = require('./helpers')
 const errorHandlers = require('./handlers/errorHandlers')
@@ -22,6 +24,13 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
+
+app.use(stylus({
+  src: path.join(__dirname, 'stylus'),
+  dest: path.join(__dirname, 'public/css'),
+  use: [nib()],
+  import: ['nib']
+}))
 
 app.use(express.static(path.join(__dirname, 'public')))
 

@@ -1,26 +1,31 @@
 mixin gameForm(game = {})
-  form(action=`/add/${game._id || ''}` method="POST")
-    .field
-      label.label(for="name") Name
-      input.input(type="text" name="name" value=game.name placeholder="Game Title")
-    
-    .field
-      label.label(for="release") Release Date
-      - Object.keys(game).length === 0 ? date = '' : date = h.moment(game.release).format('YYYY-MM-DD')
-      input.input(type="date" name="release" value=date)
 
-    .field
-      label.label(for="description") Description
-      textarea(name="description" placeholder="This game is...")= game.description
+  form.uk-form-horizontal(action=`/games/add/${game._id || ''}` method="POST")
+    .uk-margin
+      label.uk-form-label(for="title") Title
+      .uk-form-controls
+        input.uk-input(type="text" name="title" value=game.title placeholder="Asura's Wrath")
+    
+    .uk-margin
+      label.uk-form-label(for="release") Release Date
+      - Object.keys(game).length === 0 ? date = '' : date = h.moment(game.release).format('YYYY-MM-DD')
+      .uk-form-controls
+        input.uk-input(type="date" name="release" value=`${h.moment(game.release).format('YYYY-MM-DD') || ''}`)
+
+    .uk-margin
+      label.uk-form-label(for="description") Description
+      .uk-form-controls
+        input.uk-input(type="text" name="description" value=game.description placeholder="This game is really underrated!")
 
     - const choices = ['3DS', 'PC', 'PS3', 'PS4', 'PS Vita', 'Switch', 'Wii U', 'Xbox 360', 'Xbox One']
     - const platforms = game.platforms || []
-    .field
-    each choice in choices
-      p.control
-        label.checkbox(for="choice")= choice
-          input(type="checkbox" id=choice value=choice name="platforms" checked=(platforms.includes(choice)))
+    
+    .uk-margin
+      h4 Platforms
+      each choice in choices
+        .uk-margin
+          label.checkbox(for="choice")= choice
+          input.uk-checkbox(type="checkbox" id=choice value=choice name="platforms" checked=(platforms.includes(choice)))
 
-    .field
-      p.control
-        button(class="button is-primary" type="submit") Save Title
+    .uk-margin
+      button(class="uk-button uk-button-primary" type="submit") Submit to the database

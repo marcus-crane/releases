@@ -1,0 +1,10 @@
+mixin gameCard(game = {})
+  div(class="uk-width-1-4@m")
+    div(class="uk-grid-collapse uk-background-muted uk-padding uk-flex-middle" uk-grid)
+      .uk-width-auto
+        img.uk-border-circle(width="60" height="60" src="/img/logo.png")
+      .uk-width-expand
+        a(href=`/games/${game.slug}`)
+          h3(class="uk-card-title uk-margin-remove-bottom")= game.title
+        p(class="uk-text-meta")
+          time(datetime=game.release)= h.moment(game.release).format('MMMM Do')

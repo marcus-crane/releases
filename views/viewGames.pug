@@ -1,0 +1,23 @@
+extends layout
+
+include mixins/_gameCard
+
+block content
+  h1.title= title
+
+  - const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  - const monthsRendered = []
+
+  each month in months
+    each game in games
+      if h.moment(game.release).format('MMMM') === month
+        if !monthsRendered.includes(month)
+          - monthsRendered.push(month)
+          h3= month
+
+    if monthsRendered.includes(month)
+      <div class="uk-child-width-expand@s uk-text-center uk-grid-match" uk-grid>
+        each game, index in games
+          if h.moment(game.release).format('MMMM') === month
+            +gameCard(game)
+      </div>

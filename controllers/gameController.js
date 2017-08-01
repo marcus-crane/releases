@@ -3,18 +3,28 @@ const moment = require('moment')
 const h = require('../helpers')
 const Game = mongoose.model('Game')
 
-exports.getGames = async (req, res) => {
+exports.getLatestGames = async(req, res) => {
+  let games = await Game.find()
+
+  games = games.filter(game => moment(game.release).isAfter())
+  games.sort((a, b) => a.release - b.release)
+  games.length = 12
+
+  res.render('index', { title: 'Next Up', games })
+}
+
+exports.getAllGames = async (req, res) => {
   let games = await Game.find()
 
   games = games.filter(game => moment(game.release).isAfter())
   games.sort((a, b) => a.release - b.release)
 
-  res.render('index', { title: 'Upcoming Games', games })
+  res.render('viewGames', { title: 'All releases', games })
 }
 
 exports.editGame = async(req, res) => {
   let game = await Game.findOne({ slug: req.params.game })
-  res.render('editGame', { title: `Edit ${game.name}`, game })
+  res.render('editGame', { title: `Edit ${game.title}`, game })
 }
 
 exports.queryGame = async(req, res) => {
@@ -39,7 +49,7 @@ exports.addGame = (req, res) => {
 
 exports.createGame = async (req, res) => {
   const game = await (new Game(req.body)).save()
-  req.flash('success', `Successfully added ${game.name}.`)
+  req.flash('success', `Successfully added ${game.title}.`)
   res.redirect('/')
 }
 

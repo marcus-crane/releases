@@ -1,12 +1,6 @@
 extends layout
 
 block content
-  section(class="hero is-info")
-    .hero-body
-      .container
-        h1.title= game.name
-        h2.subtitle= h.moment(game.release).fromNow()
-  
-  section.section
-    .container
-      p= game.description
+  h1= game.title
+  p= `It releases ${h.moment(game.release).fromNow()}`
+  p= `Description: ${game.description}`

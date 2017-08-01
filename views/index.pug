@@ -1,20 +1,14 @@
 extends layout
 
-include mixins/_gameSnippet
+include mixins/_gameCard
 
 block content
-  section(class="hero is-info")
-    .hero-body
-      .container
-        h1.title= title
-  
-  section.section
-    .container
-      <div class="columns">
-      each game, index in games
-        if (index > 1 && index % 2 === 0)
-          </div>
-          <div class="columns">
-        .column
-          +gameSnippet(game)
-      </div>
+  h1.title= title
+
+  <div class="uk-child-width-expand@s uk-text-center uk-grid-match" uk-grid>
+    each game, index in games
+      if (index > 1 && index % 4 === 0)
+        </div>
+        <div class="uk-child-width-expand@s uk-text-center uk-grid-match" uk-grid>
+      +gameCard(game)
+  </div>

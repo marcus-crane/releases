@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise
 const slug = require('slugs')
 
 const gameSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     trim: true,
     required: 'Please specify a title'
@@ -22,7 +22,7 @@ const gameSchema = new mongoose.Schema({
 })
 
 gameSchema.pre('save', function(next) {
-  if (!this.isModified('name')) {
+  if (!this.isModified('title')) {
     return next()
   }
   this.slug = slug(this.name)
