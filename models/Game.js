@@ -25,7 +25,7 @@ gameSchema.pre('save', function(next) {
   if (!this.isModified('title')) {
     return next()
   }
-  this.slug = slug(this.name)
+  this.slug = slug(this.title)
   next()
 })
 
