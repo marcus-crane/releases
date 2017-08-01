@@ -10,7 +10,7 @@ mixin gameForm(game = {})
       label.uk-form-label(for="release") Release Date
       - Object.keys(game).length === 0 ? date = '' : date = h.moment(game.release).format('YYYY-MM-DD')
       .uk-form-controls
-        input.uk-input(type="date" name="release" value=`${h.moment(game.release).format('YYYY-MM-DD') || ''}`)
+        input.uk-input(type="date" name="release" value=`${game.release ? h.moment(game.release).format('YYYY-MM-DD') : ''}`)
 
     .uk-margin
       label.uk-form-label(for="description") Description
